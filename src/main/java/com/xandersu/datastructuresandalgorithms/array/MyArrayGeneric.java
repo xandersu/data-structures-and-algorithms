@@ -99,7 +99,7 @@ public class MyArrayGeneric<E> {
         }
         size--;
         data[size] = null;
-        if (size == data.length / 2) {
+        if (size == data.length / 4 && data.length / 2 != 0) {
             resize(data.length / 2);
         }
         return ret;
@@ -110,7 +110,7 @@ public class MyArrayGeneric<E> {
         return "MyArrayGeneric{" +
                 "data=" + Arrays.toString(data) +
                 ", size=" + size +
-                ", capacity="+ data.length +
+                ", capacity=" + data.length +
                 '}';
     }
 }
