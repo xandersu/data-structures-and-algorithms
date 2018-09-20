@@ -1,6 +1,9 @@
 package com.xandersu.datastructuresandalgorithms.array;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  * Created by lenovo on 2018/7/23.
@@ -108,9 +111,25 @@ public class MyArrayGeneric<E> {
     @Override
     public String toString() {
         return "MyArrayGeneric{" +
-                "data=" + Arrays.toString(data) +
-                ", size=" + size +
+                "size=" + size +
                 ", capacity=" + data.length +
+                ", data=" + Arrays.asList(data).stream().filter(Objects::nonNull).collect(Collectors.toList()) +
                 '}';
+    }
+
+    public int getCapacity() {
+        return data.length;
+    }
+
+    public E removeLast() {
+        return remove(size - 1);
+    }
+
+    public E getFirst() {
+        return get(0);
+    }
+
+    public E getLast() {
+        return get(size - 1);
     }
 }

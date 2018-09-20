@@ -1,6 +1,8 @@
 package com.xandersu.datastructuresandalgorithms;
 
 import com.xandersu.datastructuresandalgorithms.array.MyArrayGeneric;
+import com.xandersu.datastructuresandalgorithms.stack.MyStack;
+import com.xandersu.datastructuresandalgorithms.stack.impl.ArrayStack;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -10,20 +12,20 @@ import org.springframework.boot.test.context.SpringBootTest;
  * @Description:
  */
 @SpringBootTest
-public class TestMyArray {
+public class TestMyStack {
 
     @Test
-    public void testMyArray() {
-        MyArrayGeneric<Integer> integerArray = new MyArrayGeneric<>();
+    public void testMyStack() {
+        MyStack<Integer> integerArray = new ArrayStack<>();
         for (int i = 0; i < 11; i++) {
-            integerArray.addFirst(i);
+            integerArray.push(i);
         }
         System.out.println(integerArray);
-        integerArray.remove(integerArray.getSize() - 1);
+        integerArray.pop();
         System.out.println(integerArray);
-        integerArray.removeLast();
+        integerArray.peek();
         System.out.println(integerArray);
-        System.out.println(integerArray.getFirst());
-        System.out.println(integerArray.getLast());
+        System.out.println(integerArray.pop());
+        System.out.println(integerArray.pop());
     }
 }

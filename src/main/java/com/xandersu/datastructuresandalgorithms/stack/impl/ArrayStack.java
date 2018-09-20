@@ -1,14 +1,14 @@
 package com.xandersu.datastructuresandalgorithms.stack.impl;
 
 import com.xandersu.datastructuresandalgorithms.array.MyArrayGeneric;
-import com.xandersu.datastructuresandalgorithms.stack.Stack;
+import com.xandersu.datastructuresandalgorithms.stack.MyStack;
 
 /**
  * @Author: suxun
  * @Date: 2018/9/20 23:19
  * @Description:
  */
-public class ArrayStack<E> implements Stack<E> {
+public class ArrayStack<E> implements MyStack<E> {
 
     MyArrayGeneric<E> myArrayGeneric;
 
@@ -16,32 +16,43 @@ public class ArrayStack<E> implements Stack<E> {
         myArrayGeneric = new MyArrayGeneric<>();
     }
 
-    public ArrayStack(int capcity) {
-        myArrayGeneric = new MyArrayGeneric<>(capcity);
+    public ArrayStack(int capacity) {
+        myArrayGeneric = new MyArrayGeneric<>(capacity);
     }
 
     @Override
     public int getSize() {
-        return 0;
+        return myArrayGeneric.getSize();
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return myArrayGeneric.isEmpty();
     }
 
     @Override
     public void push(E e) {
-
+        myArrayGeneric.addLast(e);
     }
 
     @Override
     public E pop() {
-        return null;
+        return myArrayGeneric.removeLast();
     }
 
     @Override
     public E peek() {
-        return null;
+        return myArrayGeneric.getLast();
+    }
+
+    public int getCapacity() {
+        return myArrayGeneric.getCapacity();
+    }
+
+    @Override
+    public String toString() {
+        return "ArrayStack{" +
+                 myArrayGeneric +
+                "} TOP";
     }
 }

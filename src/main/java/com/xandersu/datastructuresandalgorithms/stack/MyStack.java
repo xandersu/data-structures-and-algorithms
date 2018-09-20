@@ -5,7 +5,7 @@ package com.xandersu.datastructuresandalgorithms.stack;
  * @Date: 2018/9/20 23:18
  * @Description:
  */
-public interface Stack<E> {
+public interface MyStack<E> {
 
     int getSize();
     boolean isEmpty();
