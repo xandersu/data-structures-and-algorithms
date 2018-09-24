@@ -2,6 +2,7 @@ package com.xandersu.datastructuresandalgorithms;
 
 import com.xandersu.datastructuresandalgorithms.queue.MyQueue;
 import com.xandersu.datastructuresandalgorithms.queue.impl.ArrayQueue;
+import com.xandersu.datastructuresandalgorithms.queue.impl.LoopQueue;
 import com.xandersu.datastructuresandalgorithms.stack.MyStack;
 import com.xandersu.datastructuresandalgorithms.stack.impl.ArrayStack;
 import org.junit.Test;
@@ -19,6 +20,19 @@ public class TestMyQueue {
     public void testMyQueue() {
         MyQueue<Integer> integerMyQueue = new ArrayQueue<>();
         for (int i = 0; i < 11; i++) {
+            integerMyQueue.enQueue(i);
+        }
+        System.out.println(integerMyQueue);
+        integerMyQueue.deQueue();
+        System.out.println(integerMyQueue);
+        System.out.println(integerMyQueue.deQueue());
+        System.out.println(integerMyQueue);
+    }
+
+    @Test
+    public void testLoopQueue() {
+        MyQueue<Integer> integerMyQueue = new LoopQueue<>();
+        for (int i = 0; i < 5; i++) {
             integerMyQueue.enQueue(i);
         }
         System.out.println(integerMyQueue);
