@@ -32,11 +32,11 @@ public class TestMyQueue {
     @Test
     public void testLoopQueue() {
         MyQueue<Integer> integerMyQueue = new LoopQueue<>();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 20; i++) {
             integerMyQueue.enQueue(i);
         }
         System.out.println(integerMyQueue);
-        integerMyQueue.deQueue();
+        System.out.println(integerMyQueue.deQueue());
         System.out.println(integerMyQueue);
         System.out.println(integerMyQueue.deQueue());
         System.out.println(integerMyQueue);
