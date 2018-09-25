@@ -7,11 +7,11 @@ package com.xandersu.datastructuresandalgorithms.linked;
  */
 public class MyLinkedList<E> {
 
-    private Node head;
+    private Node dummyHead;
     private int size;
 
     public MyLinkedList() {
-        head = null;
+        dummyHead = new Node(null, null);
         size = 0;
     }
 
@@ -21,6 +21,36 @@ public class MyLinkedList<E> {
 
     public boolean isEmpty() {
         return size == 0;
+    }
+
+    public void addFirst(E e) {
+//        Node node = new Node(e);
+//        node.next = head;
+//        head = node;
+        head = new Node(e, head);
+        size++;
+    }
+
+    public void add(E e, int index) {
+        if (index < 0 || index > size) {
+            throw new IllegalArgumentException("角标月越界");
+        }
+
+
+        Node prev = dummyHead;
+        for (int i = 0; i < index; i++) {
+            prev = prev.next;
+        }
+//            Node node = new Node(e);
+//            node.next = prev.next;
+//            prev.next = node;
+        prev.next = new Node(e, prev.next);
+        size++;
+
+    }
+
+    public void addLast(E e) {
+        add(e, size);
     }
 
 
