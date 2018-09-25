@@ -44,6 +44,7 @@ public class TestMyStack {
         System.out.println(integerArray);
         System.out.println(integerArray.pop());
         System.out.println(integerArray.pop());
+
         System.out.println(integerArray);
     }
 }
