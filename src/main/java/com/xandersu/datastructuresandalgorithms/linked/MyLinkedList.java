@@ -23,19 +23,11 @@ public class MyLinkedList<E> {
         return size == 0;
     }
 
-    public void addFirst(E e) {
-//        Node node = new Node(e);
-//        node.next = head;
-//        head = node;
-        head = new Node(e, head);
-        size++;
-    }
 
     public void add(E e, int index) {
         if (index < 0 || index > size) {
             throw new IllegalArgumentException("角标月越界");
         }
-
 
         Node prev = dummyHead;
         for (int i = 0; i < index; i++) {
@@ -47,6 +39,10 @@ public class MyLinkedList<E> {
         prev.next = new Node(e, prev.next);
         size++;
 
+    }
+
+    public void addFirst(E e) {
+        add(e, 0);
     }
 
     public void addLast(E e) {
