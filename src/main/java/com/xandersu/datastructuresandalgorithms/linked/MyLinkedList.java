@@ -26,7 +26,7 @@ public class MyLinkedList<E> {
 
     public void add(E e, int index) {
         if (index < 0 || index > size) {
-            throw new IllegalArgumentException("角标月越界");
+            throw new IllegalArgumentException("角标越界");
         }
 
         Node prev = dummyHead;
@@ -51,7 +51,7 @@ public class MyLinkedList<E> {
 
     public E get(int index) {
         if (index < 0 || index > size) {
-            throw new IllegalArgumentException("角标月越界");
+            throw new IllegalArgumentException("角标越界");
         }
 
         Node cur = dummyHead.next;
@@ -69,11 +69,41 @@ public class MyLinkedList<E> {
         return get(size - 1);
     }
 
-    public void set(E e,int index) {
+    public void set(E e, int index) {
         if (index < 0 || index > size) {
             throw new IllegalArgumentException("角标月越界");
         }
         Node cur = dummyHead.next;
+        for (int i = 0; i < index; i++) {
+            cur = cur.next;
+        }
+        cur.e = e;
+    }
+
+    public boolean contains(E e) {
+        Node cur = dummyHead.next;
+        while (cur != null) {
+            if (cur.e.equals(e)) {
+                return true;
+            }
+            cur = cur.next;
+        }
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder res = new StringBuilder();
+//        Node cur = dummyHead.next;
+//        while (cur != null) {
+//            res.append(cur + "->");
+//            cur = cur.next;
+//        }
+        for (Node cur = dummyHead.next; cur != null; cur = cur.next) {
+            res.append(cur + "->");
+        }
+        res.append("Null");
+        return res.toString();
     }
 
     private class Node {
@@ -95,10 +125,7 @@ public class MyLinkedList<E> {
 
         @Override
         public String toString() {
-            return "Node{" +
-                    "e=" + e +
-                    ", next=" + next +
-                    '}';
+            return e.toString();
         }
     }
 }

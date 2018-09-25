@@ -1,5 +1,6 @@
 package com.xandersu.datastructuresandalgorithms;
 
+import com.xandersu.datastructuresandalgorithms.linked.MyLinkedList;
 import com.xandersu.datastructuresandalgorithms.stack.MyStack;
 import com.xandersu.datastructuresandalgorithms.stack.impl.ArrayStack;
 import org.junit.Test;
@@ -15,16 +16,17 @@ public class TestMyLinkedList {
 
     @Test
     public void testMyLinkedList() {
-        MyStack<Integer> integerArray = new ArrayStack<>();
-        for (int i = 0; i < 11; i++) {
-            integerArray.push(i);
+        MyLinkedList<Integer> linkedList = new MyLinkedList<>();
+        for (int i = 0; i < 5; i++) {
+            linkedList.addFirst(i);
         }
-        System.out.println(integerArray);
-        integerArray.pop();
-        System.out.println(integerArray);
-        integerArray.peek();
-        System.out.println(integerArray);
-        System.out.println(integerArray.pop());
-        System.out.println(integerArray.pop());
+        System.out.println(linkedList);
+        for (int i = 10; i < 15; i++) {
+            linkedList.addLast(i);
+        }
+        System.out.println(linkedList);
+
+        linkedList.add(666, 2);
+        System.out.println(linkedList);
     }
 }
