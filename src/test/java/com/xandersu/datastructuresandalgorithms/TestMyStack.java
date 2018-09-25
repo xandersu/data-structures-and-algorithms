@@ -3,6 +3,7 @@ package com.xandersu.datastructuresandalgorithms;
 import com.xandersu.datastructuresandalgorithms.array.MyArrayGeneric;
 import com.xandersu.datastructuresandalgorithms.stack.MyStack;
 import com.xandersu.datastructuresandalgorithms.stack.impl.ArrayStack;
+import com.xandersu.datastructuresandalgorithms.stack.impl.LinkedListStack;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -27,5 +28,22 @@ public class TestMyStack {
         System.out.println(integerArray);
         System.out.println(integerArray.pop());
         System.out.println(integerArray.pop());
+        System.out.println(integerArray);
+    }
+
+    @Test
+    public void testMyLinkedListStack() {
+        MyStack<Integer> integerArray = new LinkedListStack<>();
+        for (int i = 0; i < 11; i++) {
+            integerArray.push(i);
+        }
+        System.out.println(integerArray);
+        integerArray.pop();
+        System.out.println(integerArray);
+        integerArray.peek();
+        System.out.println(integerArray);
+        System.out.println(integerArray.pop());
+        System.out.println(integerArray.pop());
+        System.out.println(integerArray);
     }
 }

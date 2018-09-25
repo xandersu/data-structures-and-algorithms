@@ -21,10 +21,10 @@ public class TestMyLinkedList {
             linkedList.addFirst(i);
         }
         System.out.println(linkedList);
-//        for (int i = 10; i < 15; i++) {
-//            linkedList.addLast(i);
-//        }
-//        System.out.println(linkedList);
+        for (int i = 10; i < 15; i++) {
+            linkedList.addLast(i);
+        }
+        System.out.println(linkedList);
         linkedList.add(666, 2);
         System.out.println(linkedList);
         linkedList.removeFirst();
