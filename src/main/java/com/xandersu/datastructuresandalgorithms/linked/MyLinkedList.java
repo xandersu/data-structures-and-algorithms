@@ -7,6 +7,7 @@ package com.xandersu.datastructuresandalgorithms.linked;
  */
 public class MyLinkedList<E> {
 
+    //虚拟头节点
     private Node dummyHead;
     private int size;
 
@@ -22,7 +23,6 @@ public class MyLinkedList<E> {
     public boolean isEmpty() {
         return size == 0;
     }
-
 
     public void add(E e, int index) {
         if (index < 0 || index > size) {
@@ -49,6 +49,32 @@ public class MyLinkedList<E> {
         add(e, size);
     }
 
+    public E get(int index) {
+        if (index < 0 || index > size) {
+            throw new IllegalArgumentException("角标月越界");
+        }
+
+        Node cur = dummyHead.next;
+        for (int i = 0; i < index; i++) {
+            cur = cur.next;
+        }
+        return cur.e;
+    }
+
+    public E getFirst() {
+        return get(0);
+    }
+
+    public E getLast() {
+        return get(size - 1);
+    }
+
+    public void set(E e,int index) {
+        if (index < 0 || index > size) {
+            throw new IllegalArgumentException("角标月越界");
+        }
+        Node cur = dummyHead.next;
+    }
 
     private class Node {
         public E e;
