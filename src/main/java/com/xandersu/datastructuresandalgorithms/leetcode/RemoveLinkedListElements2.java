@@ -5,30 +5,21 @@ package com.xandersu.datastructuresandalgorithms.leetcode;
  * @Date: 2018/9/26 22:00
  * @Description:
  */
-public class RemoveLinkedListElements {
+public class RemoveLinkedListElements2 {
 
     public ListNode removeElements(ListNode head, int val) {
-        while (head != null && head.val == val) {
-            ListNode delNode = head;
-            head = head.next;
-            delNode.next = null;
-        }
+        ListNode dummyHead = new ListNode(-1);
+        dummyHead.next = head;
 
-        if (head == null) {
-            return null;
-        }
-
-        ListNode prev = head;
+        ListNode prev = dummyHead;
         while (prev.next != null) {
             if (prev.next.val == val) {
-                ListNode delNode = prev.next;
-                prev.next = delNode.next;
-                delNode.next = null;
+                prev.next = prev.next.next;
             } else {
                 prev = prev.next;
             }
         }
-        return head;
+        return dummyHead.next;
     }
 
     public class ListNode {
