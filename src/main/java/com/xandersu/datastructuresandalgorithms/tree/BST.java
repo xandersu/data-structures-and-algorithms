@@ -4,6 +4,10 @@ package com.xandersu.datastructuresandalgorithms.tree;
  * @Author: suxun
  * @Date: 2018/9/27 21:59
  * @Description: 二分搜索树
+ *               遍历就是把所有节点都访问一遍
+ *               访问的原因与业务有关
+ *               在线性结构下，遍历是容易的，树下不难
+ *
  */
 public class BST<E extends Comparable<E>> {
 
