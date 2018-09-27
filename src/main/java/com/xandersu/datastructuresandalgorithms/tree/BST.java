@@ -88,6 +88,23 @@ public class BST<E extends Comparable<E>> {
         return node;
     }
 
+    public boolean contains(E e) {
+        return contains(root, e);
+    }
+
+    private boolean contains(Node node, E e) {
+        if (node == null) {
+            return false;
+        }
+        if (node.e.equals(e)) {
+            return true;
+        } else if (node.e.compareTo(e) > 0) {
+            return contains(node.left, e);
+        } else {
+            return contains(node.right, e);
+        }
+    }
+
     @Override
     public String toString() {
         return "BST{" +
@@ -105,5 +122,7 @@ public class BST<E extends Comparable<E>> {
         integerBST.add2(130);
         integerBST.add2(60);
         System.out.println(integerBST);
+        System.out.println(integerBST.contains(50));
+        System.out.println(integerBST.contains(60));
     }
 }
