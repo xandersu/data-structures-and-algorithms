@@ -6,7 +6,11 @@ package com.xandersu.datastructuresandalgorithms.tree;
  * @Description: 二分搜索树
  *               遍历就是把所有节点都访问一遍
  *               访问的原因与业务有关
- *               在线性结构下，遍历是容易的，树下不难
+ *               在线性结构下，遍历是容易的，树并不难
+ *               前序遍历：（访问节点在访问子树前面），最常用，最自然
+ *               对于遍历操作，两颗子树都要顾及
+ *               中序遍历：左子树，根结点，右子树
+ *
  */
 public class BST<E extends Comparable<E>> {
 
@@ -108,6 +112,49 @@ public class BST<E extends Comparable<E>> {
         }
     }
 
+    //二分搜索树的前序遍历
+    public void preOrder(){
+        preOrder(root);
+    }
+
+    //前序遍历以node为根的二分搜索树，递归算法
+    private void preOrder(Node node){
+        if(node == null){
+            return;
+        }
+        System.out.println(node.e);
+        preOrder(node.left);
+        preOrder(node.right);
+    }
+
+    //中序遍历
+    public void inOrder(){
+        inOrder(root);
+    }
+
+    private void inOrder(Node node){
+        if(node == null){
+            return;
+        }
+        inOrder(node.left);
+        System.out.println(node.e);
+        inOrder(node.right);
+    }
+
+    //后序遍历(内存释放)
+    public void postOrder(){
+        postOrder(root);
+    }
+
+    private void postOrder(Node node){
+        if(node == null){
+            return;
+        }
+        postOrder(node.left);
+        postOrder(node.right);
+        System.out.println(node.e);
+    }
+
     @Override
     public String toString() {
         return "BST{" +
@@ -124,8 +171,19 @@ public class BST<E extends Comparable<E>> {
         integerBST.add2(120);
         integerBST.add2(130);
         integerBST.add2(60);
+        integerBST.add2(90);
+        integerBST.add2(105);
+        //          100
+        //    80            110
+        //  60   90    105      120
+        //                          130
         System.out.println(integerBST);
         System.out.println(integerBST.contains(50));
         System.out.println(integerBST.contains(60));
+        integerBST.preOrder();
+        System.out.println("====");
+        integerBST.inOrder();
+        System.out.println("====");
+        integerBST.postOrder();
     }
 }
