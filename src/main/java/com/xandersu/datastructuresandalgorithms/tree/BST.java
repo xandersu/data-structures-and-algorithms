@@ -25,6 +25,10 @@ import java.util.Stack;
  * 更快的找到问题的解
  * 常用语算法设计中-最短路径
  * 图中的深度优先和广度优先遍历
+ * ==================================
+ * 二分搜索树顺序性：
+ * 最大值，最小值；前驱，后继；floor，ceil；rank：排名第几，加size，select：排名第几的是谁，加size；
+ * 维护depth（深度）；支持重复元素的二分搜索树，加count；
  */
 public class BST<E extends Comparable<E>> {
 
@@ -267,6 +271,43 @@ public class BST<E extends Comparable<E>> {
         return node;
     }
 
+    public void remove(E e){
+       root = remove(root,e);
+    }
+
+    //二分搜索树删除任意节点
+    private Node remove(Node node, E e) {
+        if(node ==null){
+            return null;
+        }
+        if(e.compareTo(node.e)<0){
+            node.left = remove(node.left,e);
+            return node;
+        }else if(e.compareTo(node.e)>0){
+            node.right = remove(node.right,e);
+            return node;
+        }else{
+            if(node.left==null){
+              Node right = node.right;
+              node.right = null;
+              size--;
+              return right;
+            }
+            if(node.right==null){
+                Node left = node.left;
+                node.left = null;
+                size--;
+                return left;
+            }
+
+            Node successor = minimun(node.right);
+            successor.right = removeMin(node.right);
+            successor.left = node.left;
+            node.left = node.right = null;
+            return successor;
+        }
+    }
+
 
     @Override
     public String toString() {
@@ -309,8 +350,13 @@ public class BST<E extends Comparable<E>> {
 //        for (int i = 0; i < 8; i++) {
 //            System.out.println(integerBST.removeMin());
 //        }
+//        for (int i = 0; i < 8; i++) {
+//            System.out.println(integerBST.removeMax());
+//        }
+        integerBST.remove(60);
+        System.out.println(integerBST);
         for (int i = 0; i < 8; i++) {
-            System.out.println(integerBST.removeMax());
+            System.out.println(integerBST.removeMin());
         }
     }
 }
