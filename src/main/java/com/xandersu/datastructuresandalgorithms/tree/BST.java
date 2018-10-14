@@ -1,16 +1,30 @@
 package com.xandersu.datastructuresandalgorithms.tree;
 
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
+
 /**
  * @Author: suxun
  * @Date: 2018/9/27 21:59
  * @Description: 二分搜索树
- *               遍历就是把所有节点都访问一遍
- *               访问的原因与业务有关
- *               在线性结构下，遍历是容易的，树并不难
- *               前序遍历：（访问节点在访问子树前面），最常用，最自然
- *               对于遍历操作，两颗子树都要顾及
- *               中序遍历：左子树，根结点，右子树
- *
+ * 二分搜索树
+ * 遍历就是把所有节点都访问一遍
+ * 访问的原因与业务有关
+ * 在线性结构下，遍历是容易的，树并不难
+ * 前序遍历：（访问节点在访问子树前面），最常用，最自然
+ * 对于遍历操作，两颗子树都要顾及
+ * 中序遍历：左子树，根结点，右子树
+ * ----------------------------
+ * 二分搜索树遍历的非递归实现比递归复杂的多
+ * 中序和后序遍历的非递归实现更复杂
+ * 中序和后序遍历的非递归实现，实际应用不广
+ * 都是深度优先
+ * ==================================
+ * 层序遍历，广度优先
+ * 更快的找到问题的解
+ * 常用语算法设计中-最短路径
+ * 图中的深度优先和广度优先遍历
  */
 public class BST<E extends Comparable<E>> {
 
@@ -113,13 +127,13 @@ public class BST<E extends Comparable<E>> {
     }
 
     //二分搜索树的前序遍历
-    public void preOrder(){
+    public void preOrder() {
         preOrder(root);
     }
 
     //前序遍历以node为根的二分搜索树，递归算法
-    private void preOrder(Node node){
-        if(node == null){
+    private void preOrder(Node node) {
+        if (node == null) {
             return;
         }
         System.out.println(node.e);
@@ -127,13 +141,29 @@ public class BST<E extends Comparable<E>> {
         preOrder(node.right);
     }
 
+    public void preOrderNR() {
+        Stack<Node> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            Node cur = stack.pop();
+            System.out.println(cur.e);
+
+            if (cur.right != null) {
+                stack.push(cur.right);
+            }
+            if (cur.left != null) {
+                stack.push(cur.left);
+            }
+        }
+    }
+
     //中序遍历
-    public void inOrder(){
+    public void inOrder() {
         inOrder(root);
     }
 
-    private void inOrder(Node node){
-        if(node == null){
+    private void inOrder(Node node) {
+        if (node == null) {
             return;
         }
         inOrder(node.left);
@@ -142,17 +172,33 @@ public class BST<E extends Comparable<E>> {
     }
 
     //后序遍历(内存释放)
-    public void postOrder(){
+    public void postOrder() {
         postOrder(root);
     }
 
-    private void postOrder(Node node){
-        if(node == null){
+    private void postOrder(Node node) {
+        if (node == null) {
             return;
         }
         postOrder(node.left);
         postOrder(node.right);
         System.out.println(node.e);
+    }
+
+    //广度优先遍历
+    public void levelOrder() {
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+        while (!q.isEmpty()) {
+            Node cur = q.remove();
+            System.out.println(cur.e);
+            if (cur.left != null) {
+                q.add(cur.left);
+            }
+            if (cur.right != null) {
+                q.add(cur.right);
+            }
+        }
     }
 
     @Override
@@ -181,9 +227,13 @@ public class BST<E extends Comparable<E>> {
         System.out.println(integerBST.contains(50));
         System.out.println(integerBST.contains(60));
         integerBST.preOrder();
-        System.out.println("====");
-        integerBST.inOrder();
-        System.out.println("====");
-        integerBST.postOrder();
+//        System.out.println("====");
+//        integerBST.inOrder();
+//        System.out.println("====");
+//        integerBST.postOrder();
+//        System.out.println("====");
+//        integerBST.preOrderNR();
+//        System.out.println("====");
+//        integerBST.levelOrder();
     }
 }

@@ -114,6 +114,21 @@ public class MyLinkedList<E> {
         return remove(size - 1);
     }
 
+    public void  reverseLinkedList(MyLinkedList<E> list) {
+        list.dummyHead.next = reverseLinkedList(list.dummyHead.next);
+    }
+
+    private Node reverseLinkedList(Node node) {
+        if (node == null || node.next == null) {
+            return node;
+        } else {
+            Node headNode = reverseLinkedList(node.next);
+            node.next.next = node;
+            node.next = null;
+            return headNode;
+        }
+    }
+
     @Override
     public String toString() {
         StringBuilder res = new StringBuilder();
