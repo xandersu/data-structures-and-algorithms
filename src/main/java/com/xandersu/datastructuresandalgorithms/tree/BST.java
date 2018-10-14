@@ -201,6 +201,73 @@ public class BST<E extends Comparable<E>> {
         }
     }
 
+    public E minimun() {
+        if (size == 0) {
+            throw new IllegalArgumentException("BST is Empty");
+        }
+        return minimun(root).e;
+    }
+
+    private Node minimun(Node node) {
+        if (node.left == null) {
+            return node;
+        }
+        return minimun(node.left);
+    }
+
+    public E maxmun() {
+        if (size == 0) {
+            throw new IllegalArgumentException("BST is Empty");
+        }
+        return maxmun(root).e;
+    }
+
+    private Node maxmun(Node node) {
+        if (node.right == null) {
+            return node;
+        }
+        return maxmun(node.right);
+    }
+
+    public E removeMin(){
+        E ret = minimun();
+        root = removeMin(root);
+        return ret;
+    }
+
+    //删除以node为根的二分搜索树中最小节点
+    //返回删除节点后的心二分搜索树的根
+    private Node removeMin(Node node) {
+        if(node.left == null){
+            Node rightNode = node.right;
+            node.right = null;
+            size--;
+            return rightNode;
+        }
+        node.left = removeMin(node.left);
+        return node;
+    }
+
+    public E removeMax(){
+        E ret = maxmun();
+        root = removeMax(root);
+        return ret;
+    }
+
+    //删除以node为根的二分搜索树中最小节点
+    //返回删除节点后的心二分搜索树的根
+    private Node removeMax(Node node) {
+        if(node.right == null){
+            Node leftNode = node.left;
+            node.left = null;
+            size--;
+            return leftNode;
+        }
+        node.right = removeMax (node.right);
+        return node;
+    }
+
+
     @Override
     public String toString() {
         return "BST{" +
@@ -224,9 +291,9 @@ public class BST<E extends Comparable<E>> {
         //  60   90    105      120
         //                          130
         System.out.println(integerBST);
-        System.out.println(integerBST.contains(50));
-        System.out.println(integerBST.contains(60));
-        integerBST.preOrder();
+//        System.out.println(integerBST.contains(50));
+//        System.out.println(integerBST.contains(60));
+//        integerBST.preOrder();
 //        System.out.println("====");
 //        integerBST.inOrder();
 //        System.out.println("====");
@@ -235,5 +302,15 @@ public class BST<E extends Comparable<E>> {
 //        integerBST.preOrderNR();
 //        System.out.println("====");
 //        integerBST.levelOrder();
+//        integerBST.removeMax();
+//        System.out.println(integerBST);
+//        integerBST.removeMin();
+//        System.out.println(integerBST);
+//        for (int i = 0; i < 8; i++) {
+//            System.out.println(integerBST.removeMin());
+//        }
+        for (int i = 0; i < 8; i++) {
+            System.out.println(integerBST.removeMax());
+        }
     }
 }
