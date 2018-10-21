@@ -21,6 +21,14 @@ public class MyArrayGeneric<E> {
         data = (E[]) new Object[capcity];
     }
 
+    public MyArrayGeneric(E[] arr) {
+        size = arr.length;
+        data = (E[]) new Object[size];
+        for (int i = 0; i < size; i++) {
+            data[i] = arr[i];
+        }
+    }
+
     public boolean isEmpty() {
         return size == 0;
     }
@@ -106,6 +114,15 @@ public class MyArrayGeneric<E> {
             resize(data.length / 2);
         }
         return ret;
+    }
+
+    public void swap(int i, int j) {
+        if (i < 0 || i >= size || j < 0 || j >= size) {
+            throw new IllegalArgumentException("参数越界");
+        }
+        E t = data[i];
+        data[i] = data[j];
+        data[j] = t;
     }
 
     @Override
