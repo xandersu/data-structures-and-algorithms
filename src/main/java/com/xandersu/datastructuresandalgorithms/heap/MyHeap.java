@@ -8,11 +8,15 @@ package com.xandersu.datastructuresandalgorithms.heap;
  * 堆中某个节点的值总是不大于其父节点的值（最大堆（相应的可以定义最小堆））
  * 用数组储存二叉堆：
  * 0 - 1 - 2 - 3 - 4 - 5
- *   -62 -41 -30 -28 -16
+ * -62 -41 -30 -28 -16
  * parent(i) = i/2; left child (i) = 2*i; right child (i) = 2 * i +1;
- *  * 0 - 1 - 2 - 3 - 4 - 5
- *  * 62 -41 -30 -28 -16
- *  * parent(i) = (i-1)/2; left child (i) = 2*i+1; right child (i) = 2 * i +2;
+ * * 0 - 1 - 2 - 3 - 4 - 5
+ * * 62 -41 -30 -28 -16
+ * * parent(i) = (i-1)/2; left child (i) = 2*i+1; right child (i) = 2 * i +2;
+ * <p>
+ * d叉堆 d-ary heap
+ * </p>
+ * 索引堆
  */
 public interface MyHeap {
 }

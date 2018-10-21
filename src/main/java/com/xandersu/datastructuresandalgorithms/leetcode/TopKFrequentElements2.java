@@ -1,10 +1,7 @@
 package com.xandersu.datastructuresandalgorithms.leetcode;
 
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.PriorityQueue;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * @Author: suxun
@@ -56,6 +53,14 @@ public class TopKFrequentElements2 {
             } else {
                 return 0;
             }
+        }
+    }
+
+    //比较器
+    private class FreqComparator implements Comparator<Freq> {
+        @Override
+        public int compare(Freq o1, Freq o2) {
+            return o1.freq - o2.freq;
         }
     }
 }

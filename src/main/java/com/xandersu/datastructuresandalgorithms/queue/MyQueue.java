@@ -12,6 +12,7 @@ package com.xandersu.datastructuresandalgorithms.queue;
  * 顺序线性结构  O(n)  O(1)
  * 堆          O(logN)O(logN)
  * </p>
+ * 栈，也可以理解成一个队列
  */
 public interface MyQueue<E> {
 
