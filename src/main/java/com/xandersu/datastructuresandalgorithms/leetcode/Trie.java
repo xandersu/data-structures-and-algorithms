@@ -1,25 +1,13 @@
-package com.xandersu.datastructuresandalgorithms.trie;
+package com.xandersu.datastructuresandalgorithms.leetcode;
 
 import java.util.TreeMap;
 
 /**
  * @Author: suxun
  * @Date: 2018/11/4 14:50
- * @Description: trie 前缀树
- * ------root
- * c      d    p
- * a     o  e  a
- * t     g  e  n
- * ---------e  d
- * ---------r  a
- * <p>
- * 每个节点有26个指向下个节点的指针
- * class node{ char c;Node next[26];}
- * 每个节点有若干个指向下个节点的指针
- * class Node{char c;Map<char,Node> next;}
- * class Node{boolean isWord;Map<char,Node> next;}
+ * @Description: 208 implement-trie-prefix-tree
  */
-public class MyTrie {
+public class Trie {
 
     private class Node {
         public boolean isWord;
@@ -38,16 +26,12 @@ public class MyTrie {
     private Node root;
     private int size;
 
-    public MyTrie() {
+    public Trie() {
         root = new Node();
         size = 0;
     }
 
-    public int getSize() {
-        return size;
-    }
-
-    public void add(String word) {
+    public void insert(String word) {
         Node cur = root;
         for (int i = 0; i < word.length(); i++) {
             char c = word.charAt(i);
@@ -62,7 +46,7 @@ public class MyTrie {
         }
     }
 
-    public boolean contains(String word) {
+    public boolean search(String word) {
         Node cur = root;
         for (int i = 0; i < word.length(); i++) {
             char c = word.charAt(i);
@@ -74,7 +58,7 @@ public class MyTrie {
         return cur.isWord;
     }
 
-    public boolean isPerfix(String prefix) {
+    public boolean startsWith(String prefix) {
         Node cur = root;
         for (int i = 0; i < prefix.length(); i++) {
             char c = prefix.charAt(i);
