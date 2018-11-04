@@ -3,7 +3,7 @@ package com.xandersu.datastructuresandalgorithms.union_find;
 /**
  * @Author: suxun
  * @Date: 2018/11/4 17:21
- * @Description: 并查集
+ * @Description: 并查集(孩子指向父亲)
  * 连接问题：
  * 网络中节点的连接状态：网络是个抽象概念：用户之间形成的网络。
  * 对于一组数据，主要支持两个动作：1、union(p,q) 2、isConnected(p,q)
@@ -20,6 +20,8 @@ package com.xandersu.datastructuresandalgorithms.union_find;
  * ===================================
  * 子节点指向父节点
  * 将每一个元素，看做一个节点
+ * ===================================
+ * 假如路径压缩时间复杂度:严格意义上:O(log*n)  {log*n={0-(n小于等于1)},{1+log*(logn)-(n大于1)}}
  */
 public interface MyUF {
     //并,将两个元素合并在一起
