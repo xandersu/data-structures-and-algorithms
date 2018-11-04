@@ -3,7 +3,7 @@ package com.xandersu.datastructuresandalgorithms.leetcode;
 /**
  * @Author: suxun
  * @Date: 2018/11/4 13:49
- * @Description:
+ * @Description: 303. range-sum-query-immutable
  */
 public class NumArray2 {
 

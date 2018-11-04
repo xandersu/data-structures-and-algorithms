@@ -5,7 +5,7 @@ import java.util.TreeMap;
 /**
  * @Author: suxun
  * @Date: 2018/11/4 14:50
- * @Description: trie 前缀树
+ * @Description: trie 字典树 前缀树
  * ------root
  * c      d    p
  * a     o  e  a
@@ -18,6 +18,22 @@ import java.util.TreeMap;
  * 每个节点有若干个指向下个节点的指针
  * class Node{char c;Map<char,Node> next;}
  * class Node{boolean isWord;Map<char,Node> next;}
+ * -------------------------
+ * 局限性：空间！
+ * 解决办法：压缩字典树
+ * Ternary Search Trie  三分搜索字典树
+ * -------------------------
+ * 后缀树
+ * -------------------------
+ * 子串查询:KMP Boyer-Moore  Rabin-Karp
+ * -------------------------
+ * 文件压缩
+ * -------------------------
+ * 模式匹配
+ * -------------------------
+ * 编译原理
+ * -------------------------
+ * DNA
  */
 public class MyTrie {
 
