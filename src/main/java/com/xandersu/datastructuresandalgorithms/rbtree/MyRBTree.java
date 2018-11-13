@@ -29,7 +29,17 @@ package com.xandersu.datastructuresandalgorithms.rbtree;
  * 红黑树是保持黑平衡的二叉树，严格意义上不是平衡二叉树
  * 最大高度2logn 时间复杂度O(logn)
  * 添加删除红黑树比AVL快一些，只查询AVL快一点
+ * ·
+ * 永远添加红色节点,每次new节点，都是红色节点
  * 颜色翻转和右旋转
+ * 红黑树添加新元素：
+ * 红节点右孩子还是红节点-》左旋转-右旋转-颜色翻转
+ *      b       b              b         b          r
+ *   /    -> r      ->     r     ->    /  \   ->  /  \
+ * r            r       r            r     r     b    b
+ *                 左旋转        右旋转         颜色翻转
+ * · 时机：添加节点后回溯向上维护
+ *
  */
 public interface MyRBTree {
 }
