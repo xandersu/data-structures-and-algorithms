@@ -67,6 +67,15 @@ import java.util.HashSet;
  * n / m >= upperTol
  * 平均每个地址承载的元素少过一定程度，即缩容
  * n / m <= lowerTol
+ * `
+ * 哈希表复杂度分析
+ * 回忆动态数组的均摊复杂度分析：平均复杂度O(1)
+ * 对于哈希表来说，元素数从N增加到 upperTol * N；地址空间翻倍:
+ * 平均复杂度O(1) 每个操作在O(lowerTol) ~ O(upperTol) -> O(1)
+ * 缩容同理
+ * 更复杂的动态空间处理方法
+ * 扩容 M -> 2*M
+ * 扩容 2*M 不是素数
  */
 public class MyHashTable {
     public static void main(String[] args) {
