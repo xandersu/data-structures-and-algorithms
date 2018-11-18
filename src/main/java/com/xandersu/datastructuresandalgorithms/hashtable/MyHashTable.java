@@ -76,8 +76,20 @@ import java.util.HashSet;
  * 更复杂的动态空间处理方法
  * 扩容 M -> 2*M
  * 扩容 2*M 不是素数
+ * `
+ * 哈希表：均摊复杂度O(1)
+ * 牺牲了： 顺序性
+ * ·
+ * ------------集合、映射
+ * -----|                   |
+ * 有序集合，有序映射      无序集合、无序映射
+ * -----平衡树              哈希表
+ * ·
+ * 我们的哈希表BUG：要不要求comparable 有矛盾
+ * `
+ * 开放地址法
  */
-public class MyHashTable {
+public interface MyHashTable {
     public static void main(String[] args) {
         int a = 42;
         int aHashCode = ((Integer) a).hashCode();
