@@ -94,7 +94,7 @@ public class RBTree<K extends Comparable<K>, V> {
     }
 
     private boolean isRed(Node node) {
-        return node != null ? node.color == RED : true;
+        return node != null ? node.color == RED : false;
     }
 
     public boolean isBST() {
