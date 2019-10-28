@@ -6,8 +6,8 @@ package com.xandersu.refertooffer;
 public class P4FindInTwoDimensionalArray {
 
     public static void main(String[] args) {
-        int[][] array = {{1, 4}, {3, 4}, {4, 5}, {5, 6}};
-        System.out.println(Find(3, array));
+        int[][] array = {{1, 4, 8}, {3, 20, 21}, {10, 21, 30}, {19, 22, 33}};
+        System.out.println(Find(20, array));
     }
 
     public static boolean Find(int target, int[][] array) {
