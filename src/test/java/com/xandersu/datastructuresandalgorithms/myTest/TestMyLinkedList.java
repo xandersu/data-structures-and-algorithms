@@ -1,15 +1,9 @@
 package com.xandersu.datastructuresandalgorithms.myTest;
 
-import com.xandersu.datastructuresandalgorithms.linked.MyLinkedList;
-import com.xandersu.datastructuresandalgorithms.stack.MyStack;
-import com.xandersu.datastructuresandalgorithms.stack.impl.ArrayStack;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import java.util.LinkedList;
 
 /**
  * @Author: suxun

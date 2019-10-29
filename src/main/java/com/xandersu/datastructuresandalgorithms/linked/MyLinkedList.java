@@ -114,7 +114,7 @@ public class MyLinkedList<E> {
         return remove(size - 1);
     }
 
-    public void  reverseLinkedList(MyLinkedList<E> list) {
+    public void reverseLinkedList(MyLinkedList<E> list) {
         list.dummyHead.next = reverseLinkedList(list.dummyHead.next);
     }
 
@@ -127,6 +127,21 @@ public class MyLinkedList<E> {
             node.next = null;
             return headNode;
         }
+    }
+
+    public void myWhileReverseLinked() {
+        this.dummyHead.next = myWhileReverseLinked(this.dummyHead.next);
+    }
+
+    private Node myWhileReverseLinked(Node node) {
+        Node prev = null;
+        while (node != null) {
+            Node temp = node.next;
+            node.next = prev;
+            prev = node;
+            node = temp;
+        }
+        return prev;
     }
 
     @Override

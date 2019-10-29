@@ -1,13 +1,9 @@
 package com.xandersu.datastructuresandalgorithms;
 
 import com.xandersu.datastructuresandalgorithms.linked.MyLinkedList;
-import com.xandersu.datastructuresandalgorithms.stack.MyStack;
-import com.xandersu.datastructuresandalgorithms.stack.impl.ArrayStack;
 import lombok.ToString;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import java.util.LinkedList;
 
 /**
  * @Author: suxun
@@ -28,12 +24,14 @@ public class TestMyLinkedList {
             linkedList.addLast(i);
         }
         System.out.println(linkedList);
-        linkedList.add(666, 2);
+        linkedList.myWhileReverseLinked();
         System.out.println(linkedList);
-        linkedList.removeFirst();
-        System.out.println(linkedList);
-        linkedList.removeLast();
-        System.out.println(linkedList);
+//        linkedList.add(666, 2);
+//        System.out.println(linkedList);
+//        linkedList.removeFirst();
+//        System.out.println(linkedList);
+//        linkedList.removeLast();
+//        System.out.println(linkedList);
     }
 
     @Test
@@ -50,10 +48,8 @@ public class TestMyLinkedList {
     }
 
 
-
-
     @Test
-    public void reverseLinkedList(){
+    public void reverseLinkedList() {
         Node linkNode1 = new Node();
         linkNode1.data = 1;
         Node linkNode2 = new Node();
@@ -76,12 +72,12 @@ public class TestMyLinkedList {
     }
 
     private void reverseLinkedList(Node node) {
-        Node pre= null;
+        Node pre = null;
         Node cur = node;
         Node headNode = null;
-        while(cur != null){
+        while (cur != null) {
             Node next = node.next;
-            if(next == null){
+            if (next == null) {
                 headNode = cur;
             }
 
@@ -92,8 +88,8 @@ public class TestMyLinkedList {
     }
 
     @ToString
-    public class Node{
-        Node next ;
+    public class Node {
+        Node next;
         Integer data;
     }
 }
