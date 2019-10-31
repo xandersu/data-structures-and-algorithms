@@ -129,10 +129,12 @@ public class MyLinkedList<E> {
         }
     }
 
+    //自己实现的反转链表
     public void myWhileReverseLinked() {
         this.dummyHead.next = myWhileReverseLinked(this.dummyHead.next);
     }
 
+    //自己实现的反转链表
     private Node myWhileReverseLinked(Node node) {
         Node prev = null;
         while (node != null) {
@@ -142,6 +144,42 @@ public class MyLinkedList<E> {
             node = temp;
         }
         return prev;
+    }
+
+    //
+    public void reverseN2M(int m, int n) {
+        this.dummyHead.next = reverseN2M(this.dummyHead.next, m, n);
+    }
+
+    Node reverseN2M(Node head, int m, int n) {
+        if (m >= n || head == null) {
+            return head;
+        }
+        Node dummy = new Node();
+        dummy.next = head;
+        head = dummy;
+        for (int i = 1; i < m; i++) {
+            if (head == null) {
+                return null;
+            }
+            head = head.next;
+        }
+        Node pmNode = head;
+        Node mNode = head.next;
+        Node nNode = mNode;
+        Node pnNode = mNode.next;
+        for (int i = m; i < n; i++) {
+            if (pnNode == null) {
+                return null;
+            }
+            Node tmp = pnNode.next;
+            pnNode.next = nNode;
+            nNode = pnNode;
+            pnNode = tmp;
+        }
+        pmNode.next = nNode;
+        mNode.next = pnNode;
+        return dummy.next;
     }
 
     @Override
@@ -159,7 +197,7 @@ public class MyLinkedList<E> {
         return res.toString();
     }
 
-    private class Node {
+    public class Node {
         public E e;
         public Node next;
 

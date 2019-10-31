@@ -216,7 +216,8 @@ public class BST<E extends Comparable<E>> {
         if (node.left == null) {
             return node;
         }
-        return minimun(node.left);
+        return
+                (node.left);
     }
 
     public E maxmun() {

@@ -19,19 +19,21 @@ public class TestMyLinkedList {
         for (int i = 0; i < 5; i++) {
             linkedList.addFirst(i);
         }
-        System.out.println(linkedList);
+//        System.out.println(linkedList);
         for (int i = 10; i < 15; i++) {
             linkedList.addLast(i);
         }
         System.out.println(linkedList);
-        linkedList.myWhileReverseLinked();
-        System.out.println(linkedList);
+//        linkedList.myWhileReverseLinked();
+//        System.out.println(linkedList);
 //        linkedList.add(666, 2);
 //        System.out.println(linkedList);
 //        linkedList.removeFirst();
 //        System.out.println(linkedList);
 //        linkedList.removeLast();
 //        System.out.println(linkedList);
+        linkedList.reverseN2M(0,5);
+        System.out.println(linkedList);
     }
 
     @Test

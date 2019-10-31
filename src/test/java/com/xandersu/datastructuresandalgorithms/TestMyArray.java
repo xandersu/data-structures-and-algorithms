@@ -1,5 +1,6 @@
 package com.xandersu.datastructuresandalgorithms;
 
+import com.alibaba.fastjson.JSON;
 import com.xandersu.datastructuresandalgorithms.array.MyArrayGeneric;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -25,5 +26,33 @@ public class TestMyArray {
         System.out.println(integerArray);
         System.out.println(integerArray.getFirst());
         System.out.println(integerArray.getLast());
+    }
+
+    @Test
+    public void testMyArray2() {
+        int[] arr = {1, 4, 6, 2, 7, 0, -1, 8, 120, 11};
+
+//        for (int i = 0; i < arr.length-1; i++) {
+//            for (int j = i; j < arr.length-1; j++) {
+//                int a = arr[i];
+//                int b = arr[j];
+//                int c = -1111;
+//                if(a<b){
+//
+//                }
+//            }
+//        }
+        for (int i = 1; i < arr.length; i++) {
+            for (int j = 0; j < arr.length - i; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    int temp = arr[j];
+
+                    arr[j] = arr[j + 1];
+
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+        System.out.println(JSON.toJSONString(arr));
     }
 }

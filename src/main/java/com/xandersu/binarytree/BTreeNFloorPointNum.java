@@ -3,6 +3,10 @@ package com.xandersu.binarytree;
 import com.alibaba.fastjson.JSON;
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
+
 /**
  * Created by lenovo on 2019/10/29.
  * 求二叉树中第k层节点的个数
@@ -16,9 +20,16 @@ public class BTreeNFloorPointNum {
         treeNode.add(5);
         treeNode.add(80);
         treeNode.add(0);
-        treeNode.add(11);
+        treeNode.add(15);
+        treeNode.add(14);
         treeNode.add(-1);
 //        System.out.println(treeNode);
+
+        treeNode.preFor();
+        System.out.println("=====");
+        treeNode.inOrder();
+        System.out.println("=====");
+        treeNode.afterOrder();
 
         //5.求二叉树中第k层节点的个数
 //        System.out.println("第" + 1 + "层个数=" + getFloorSize(treeNode, 1));
@@ -35,7 +46,7 @@ public class BTreeNFloorPointNum {
 //        System.out.println("二叉树的最小深度=" + minHeight(treeNode));
 //        System.out.println("求二叉树中节点的个数=" + getNodeSize(treeNode));
 //        System.out.println("求二叉树中节点的个数=" + numOfTreeNode(treeNode));
-        System.out.println("求二叉树中叶子节点的个数=" + getleafNodeSize(treeNode));
+//        System.out.println("求二叉树中叶子节点的个数=" + getleafNodeSize(treeNode));
 
 
     }
@@ -98,6 +109,52 @@ public class BTreeNFloorPointNum {
 
     //6.判断二叉树是否是平衡二叉树
 
+    //从上往下打印出二叉树的每个节点，同层节点从左至右打印。
+    public ArrayList<Integer> PrintFromTopToBottom(TreeNode root) {
+        ArrayList<Integer> res = new ArrayList<>();
+        if (root == null) {
+            return res;
+        }
+
+        Deque<TreeNode> tempDeque = new LinkedList<>();
+        tempDeque.addFirst(root);
+        while (!tempDeque.isEmpty()){
+            TreeNode treeNode = tempDeque.pollFirst();
+            res.add(treeNode.val);
+            if (treeNode.left != null) {
+                tempDeque.addLast(treeNode.left);
+            }
+            if (treeNode.right != null) {
+                tempDeque.addLast(treeNode.right);
+            }
+        }
+        return res;
+    }
+
+    //从上到下按层打印二叉树，同一层结点从左至右输出。每一层输出一行。
+    ArrayList<ArrayList<Integer> > Print(TreeNode pRoot) {
+
+        ArrayList<ArrayList<Integer>> res = new ArrayList<>();
+
+        Print(pRoot,1,res);
+        return res;
+    }
+
+    private void Print(TreeNode pRoot, int deep, ArrayList<ArrayList<Integer>> res) {
+        if (pRoot == null) {
+            return;
+        }
+        if(deep>res.size()){
+            ArrayList<Integer> temp = new ArrayList<>();
+            temp.add(pRoot.val);
+            res.add(temp);
+        }else{
+            ArrayList<Integer> temp = res.get(deep);
+            temp.add(pRoot.val);
+        }
+        Print(pRoot.left,deep+1,res);
+        Print(pRoot.right,deep+1,res);
+    }
 
     //==========================================================================
     static int getMinDepth(TreeNode root) {
@@ -202,6 +259,42 @@ public class BTreeNFloorPointNum {
                     add(treeNode.right, i);
                 }
             }
+        }
+
+        public void preFor(){
+            preFor(this);
+        }
+        public void preFor(TreeNode treeNode){
+            if (treeNode == null) {
+                return;
+            }
+            System.out.println(treeNode.getVal());
+            preFor(treeNode.left);
+            preFor(treeNode.right);
+        }
+
+        public void inOrder(){
+            inOrder(this);
+        }
+        public void inOrder(TreeNode treeNode){
+            if (treeNode == null) {
+                return;
+            }
+            preFor(treeNode.left);
+            System.out.println(treeNode.getVal());
+            preFor(treeNode.right);
+        }
+
+        public void afterOrder(){
+            afterOrder(this);
+        }
+        public void afterOrder(TreeNode treeNode){
+            if (treeNode == null) {
+                return;
+            }
+            preFor(treeNode.left);
+            preFor(treeNode.right);
+            System.out.println(treeNode.getVal());
         }
 
         @Override
