@@ -129,6 +129,7 @@ public class MyLinkedList<E> {
         }
     }
 
+    //====================================================================
     //自己实现的反转链表
     public void myWhileReverseLinked() {
         this.dummyHead.next = myWhileReverseLinked(this.dummyHead.next);
@@ -182,6 +183,144 @@ public class MyLinkedList<E> {
         return dummy.next;
     }
 
+    public Node reverseBetween(Node head, int m, int n) {
+        if (head == null || m >= n) {
+            return head;
+        }
+        Node dummy = new Node();
+        dummy.next = head;
+        head = dummy;
+        for (int i = 1; i < m; i++) {
+            if (head == null) {
+                return null;
+            }
+            head = head.next;
+        }
+
+        Node pmNode = head;
+        Node mNode = head.next;
+        Node nNode = mNode;
+        Node pnNode = nNode.next;
+        for (int i = m; i < n; i++) {
+            Node temp = pnNode.next;
+            pnNode.next = nNode;
+            nNode = pnNode;
+            pnNode = temp;
+        }
+        pmNode.next = nNode;
+        mNode.next = pnNode;
+        return dummy.next;
+    }
+
+    public Node getLastN(int n) {
+        return getLastN(dummyHead.next, n);
+    }
+
+    //得到链表倒数第n个节点
+    public Node getLastN(Node head, int n) {
+        Node n1 = head.next;
+        Node res = head.next;
+        for (int i = 0; i < n - 1; i++) {
+            if (n1 == null) {
+                return null;
+            }
+            n1 = n1.next;
+        }
+        while (n1 != null) {
+            n1 = n1.next;
+            res = res.next;
+        }
+
+        return res;
+    }
+
+    //判断链表是否有环
+    public boolean hasCycle() {
+        Node head = dummyHead.next;
+        if (head == null || head.next == null) {
+            return false;
+        }
+        Node fast = head.next;
+        Node slow = head.next;
+
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+            if (fast == slow) {
+                return true;
+            }
+
+        }
+        return false;
+    }
+
+    //合并两个链表
+    public ListNode mergeTwoLinkedList(ListNode node1, ListNode node2) {
+        if (node1 == null) {
+            return node2;
+        }
+        if (node2 == null) {
+            return node1;
+        }
+        ListNode dummy = new ListNode();
+        ListNode prev = dummy;
+
+        while (node1 != null && node2 != null) {
+            if (node1.val > node2.val) {
+                prev.next = node2;
+                node2 = node2.next;
+            } else {
+                prev.next = node1;
+                node1 = node1.next;
+            }
+            prev = prev.next;
+        }
+        prev.next = node1 != null ? node1 : node2;
+
+        return dummy.next;
+    }
+
+    public ListNode mergeKLists(ListNode[] lists) {
+        if (lists == null || lists.length == 0) {
+            return null;
+        }
+        return mergeKLists(lists, 0, lists.length - 1);
+    }
+
+    public ListNode mergeKLists(ListNode[] lists, int start, int end) {
+        if (start == end) {
+            return lists[start];
+        }
+        int middle = start + (end - start) / 2;
+        ListNode l1 = mergeKLists(lists, start, middle);
+        ListNode l2 = mergeKLists(lists, middle + 1, end);
+        return mergeTwoLinkedList(l1, l2);
+    }
+
+    //合并两个链表
+    public ListNode mergeTwoLinkedList2(ListNode node1, ListNode node2) {
+        if (node1 == null) {
+            return node2;
+        }
+        if (node2 == null) {
+            return node1;
+        }
+        ListNode dummy = new ListNode(-1);
+        ListNode prev = dummy;
+        while (node1 != null && node2 != null) {
+            if (node1.val <= node2.val) {
+                prev.next = node1;
+                node1 = node1.next;
+            } else {
+                prev.next = node2;
+                node2 = node2.next;
+            }
+            prev = prev.next;
+        }
+        prev.next = node1 == null ? node2 : node1;
+        return dummy.next;
+    }
+
     @Override
     public String toString() {
         StringBuilder res = new StringBuilder();
@@ -217,6 +356,19 @@ public class MyLinkedList<E> {
         @Override
         public String toString() {
             return e.toString();
+        }
+    }
+
+    public class ListNode {
+        int val;
+        ListNode next;
+
+        public ListNode() {
+
+        }
+
+        public ListNode(int x) {
+            val = x;
         }
     }
 }

@@ -32,8 +32,11 @@ public class TestMyLinkedList {
 //        System.out.println(linkedList);
 //        linkedList.removeLast();
 //        System.out.println(linkedList);
-        linkedList.reverseN2M(0,5);
-        System.out.println(linkedList);
+//        linkedList.reverseN2M(0, 5);
+//        System.out.println(linkedList);
+
+        System.out.println(linkedList.hasCycle());
+
     }
 
     @Test
