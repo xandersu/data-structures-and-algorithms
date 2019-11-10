@@ -9,7 +9,7 @@ public class ThreadPrintTest {
 
     public static void main(String[] args) {
         int maxNum = 10;
-        int maxThread = 10;
+        int maxThread = 3;
         for (int i = 0; i < maxThread; i++) {
             new ThreadPrint(i, maxThread, maxNum).start();
         }
@@ -35,6 +35,7 @@ public class ThreadPrintTest {
             while (true) {
                 synchronized (LOCK) {
                     if (current > maxNum) {
+                        LOCK.notifyAll();
                         break;
                     }
                     if (current % maxThread == threadIndex) {
