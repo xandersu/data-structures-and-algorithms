@@ -3,7 +3,9 @@ package com.xandersu.algorithms.sort.quick_sort;
 import java.util.Arrays;
 
 /**
- * Created by lenovo on 2019/11/9.
+ * @author su
+ * @date 2019/11/922:53
+ * @description
  */
 public class QuickSort {
 
