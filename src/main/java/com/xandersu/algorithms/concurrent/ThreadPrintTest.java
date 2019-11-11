@@ -1,4 +1,4 @@
-package com.xandersu.algorithms.sort;
+package com.xandersu.algorithms.concurrent;
 
 /**
  * @author su

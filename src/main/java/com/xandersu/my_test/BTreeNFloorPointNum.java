@@ -1,4 +1,4 @@
-package com.xandersu.binarytree;
+package com.xandersu.my_test;
 
 import com.alibaba.fastjson.JSON;
 import lombok.Data;
