@@ -1,4 +1,4 @@
-package com.xandersu.algorithms.concurrent;
+package com.xandersu.my_test.concurrent;
 
 /**
  * @author su

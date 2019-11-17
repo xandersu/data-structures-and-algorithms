@@ -1,8 +1,8 @@
-package com.xandersu.algorithms.sort.insert_sort;
+package com.xandersu.algorithms.insert_sort;
 
 
-import com.xandersu.algorithms.sort.SortUtil;
-import com.xandersu.algorithms.sort.select_sort.MySelectSort;
+import com.xandersu.algorithms.SortUtil;
+import com.xandersu.algorithms.select_sort.MySelectSort;
 
 import java.util.Arrays;
 

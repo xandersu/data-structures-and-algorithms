@@ -1,6 +1,6 @@
-package com.xandersu.algorithms.sort.select_sort;
+package com.xandersu.algorithms.select_sort;
 
-import com.xandersu.algorithms.sort.quick_sort.MyQuickSort;
+import com.xandersu.algorithms.quick_sort.MyQuickSort;
 
 import java.util.Arrays;
 
