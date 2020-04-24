@@ -1,5 +1,8 @@
 package com.xandersu.datastructuresandalgorithms.linked;
 
+import lombok.Data;
+import lombok.ToString;
+
 /**
  * @Author: suxun
  * @Date: 2018/9/25 21:52
@@ -359,7 +362,9 @@ public class MyLinkedList<E> {
         }
     }
 
-    public class ListNode {
+    @Data
+    @ToString
+    public static class ListNode {
         int val;
         ListNode next;
 
@@ -371,4 +376,49 @@ public class MyLinkedList<E> {
             val = x;
         }
     }
+
+    //递归
+    public static ListNode reverseMy1(ListNode node){
+        if (node == null || node.next == null) {
+            return node;
+        }
+        ListNode headNode = reverseMy1(node.next);
+        node.next.next = node;
+        node.next = null;
+        return headNode;
+    }
+    //循环
+    public static ListNode reverseMy2(ListNode node) {
+        ListNode temp = null;
+        while (node != null) {
+            ListNode next = node.next;
+            node.next = temp;
+            temp = node;
+            node = next;
+        }
+        return temp;
+    }
+
+    public static void main(String[] args) {
+        ListNode listNode0 = new ListNode(0);
+        ListNode listNode1 = new ListNode(1);
+        ListNode listNode2 = new ListNode(2);
+        ListNode listNode3 = new ListNode(3);
+        ListNode listNode4 = new ListNode(4);
+        ListNode listNode5 = new ListNode(5);
+        listNode0.next = listNode1;
+        listNode1.next = listNode2;
+        listNode2.next = listNode3;
+        listNode3.next = listNode4;
+        listNode4.next = listNode5;
+
+        System.out.println(listNode0);
+        ListNode reverse1 = reverseMy1(listNode0);
+        System.out.println(reverse1);
+        ListNode reverse2 = reverseMy2(reverse1);
+        System.out.println(reverse2);
+    }
+
+
+
 }
