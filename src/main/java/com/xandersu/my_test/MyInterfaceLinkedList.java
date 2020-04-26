@@ -1,7 +1,7 @@
 package com.xandersu.my_test;
 
 import com.alibaba.fastjson.JSON;
-import com.xandersu.datastructuresandalgorithms.linked.MyLinkedList;
+import com.xandersu.class207_datastructuresandalgorithms.linked.MyLinkedList;
 import lombok.Data;
 import lombok.ToString;
 
