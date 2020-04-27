@@ -1,5 +1,6 @@
 package com.xandersu.class71_algorithms.select_sort;
 
+import com.xandersu.class71_algorithms.SortUtil;
 import com.xandersu.class71_algorithms.quick_sort.MyQuickSort;
 
 import java.util.Arrays;
@@ -21,7 +22,7 @@ public class MySelectSort {
     public static void selectSort(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
             int smallIndex = findSmallIndex(arr, i);
-            MyQuickSort.swap(arr, i, smallIndex);
+            SortUtil.swap(arr, i, smallIndex);
         }
     }
 
