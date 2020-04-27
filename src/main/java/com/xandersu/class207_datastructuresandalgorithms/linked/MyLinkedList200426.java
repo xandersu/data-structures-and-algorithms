@@ -208,7 +208,7 @@ public class MyLinkedList200426 {
     }
 
     //6.删除链表倒数第n个节点
-    public ListNode removeNthFromEnd(ListNode head, int n) {
+    public static ListNode removeNthFromEnd(ListNode head, int n) {
         if (head == null) {
             return null;
         }
@@ -216,8 +216,27 @@ public class MyLinkedList200426 {
             return head;
         }
 
+        ListNode slow = head;
+        ListNode fast = head;
+        ListNode pre = null;
 
-        return null;
+        while (fast != null) {
+            if (n <= 0) {
+                pre = slow;
+                slow = slow.next;
+            }
+            fast = fast.next;
+            n--;
+        }
+        if (n > 0) {
+            return null;
+        }
+        if (pre == null) {
+            return head.next;
+        }
+        pre.next = slow.next;
+
+        return head;
     }
 
 
@@ -241,6 +260,8 @@ public class MyLinkedList200426 {
 //        System.out.println(sortList(listNode1));
 
 //        System.out.println(getKthFromEnd(listNode1, 2));
+
+        System.out.println(removeNthFromEnd(listNode1, 2));
 
     }
 
