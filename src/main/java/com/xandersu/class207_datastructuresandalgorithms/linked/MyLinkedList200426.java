@@ -259,26 +259,65 @@ public class MyLinkedList200426 {
         return head;
     }
 
-    //8.删除链表中重复的元素ii,去掉重复的节点
-    public static ListNode deleteMuNode2(ListNode head) {
-
+    public ListNode removeDuplicateNodes(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode dummy = head;
+        Set<Integer> set = new HashSet<>();
+        set.add(head.val);
+        while (dummy != null && dummy.next != null) {
+            int val = dummy.next.val;
+            if (set.contains(val)) {
+                dummy.next = dummy.next.next;
+            } else {
+                set.add(val);
+                dummy = dummy.next;
+            }
+        }
         return head;
+    }
+
+    //8
+    //leetCode 82
+    public static ListNode deleteDuplicates2(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode dummyHead = new ListNode(0);
+        dummyHead.next = head;
+        head = dummyHead;
+
+        while (head.next != null && head.next.next != null) {
+
+            if (head.next.val == head.next.next.val) {
+                int val = head.next.val;
+                while (head.next != null && head.next.val == val) {
+                    head.next = head.next.next;
+                }
+            } else {
+                head = head.next;
+            }
+        }
+        return dummyHead.next;
     }
 
 
     public static void main(String[] args) {
         ListNode listNode1 = new ListNode(1);
-        ListNode listNode2 = new ListNode(1);
-        ListNode listNode3 = new ListNode(1);
-        ListNode listNode4 = new ListNode(4);
-        ListNode listNode5 = new ListNode(5);
-        ListNode listNode6 = new ListNode(6);
+        ListNode listNode2 = new ListNode(2);
+        ListNode listNode3 = new ListNode(3);
+        ListNode listNode4 = new ListNode(3);
+        ListNode listNode5 = new ListNode(4);
+        ListNode listNode6 = new ListNode(4);
+        ListNode listNode7 = new ListNode(5);
 
         listNode1.next = listNode2;
         listNode2.next = listNode3;
         listNode3.next = listNode4;
         listNode4.next = listNode5;
         listNode5.next = listNode6;
+        listNode6.next = listNode7;
         System.out.println(listNode1);
 
 //        ListNode listNode = reverseList(listNode1);
@@ -292,7 +331,7 @@ public class MyLinkedList200426 {
 
 //        System.out.println(removeNthFromEnd(listNode1, 2));
 
-        System.out.println(deleteDuplicates(listNode1));
+        System.out.println(deleteDuplicates2(listNode1));
     }
 
 }
