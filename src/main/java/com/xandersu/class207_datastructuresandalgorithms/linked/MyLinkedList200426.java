@@ -454,7 +454,7 @@ public class MyLinkedList200426 {
         return smallDummy.next;
     }
 
-    //12.翻转链表的n到m之间的节点
+    //12.翻转链表的m到n之间的节点
     //92. 反转链表 II
     public static ListNode reverseBetween(ListNode head, int m, int n) {
         if (head == null || head.next == null || m < 0 || n < 0 || m >= n) {
@@ -462,22 +462,35 @@ public class MyLinkedList200426 {
         }
         ListNode dummy = new ListNode(0);
         dummy.next = head;
-        ListNode maxNode = head;
+        head = dummy;
+        ListNode maxNode = dummy.next;
+        ListNode leftStart = null;
 
-        for (int i = 1; i < m && head != null; i++) {
+        for (int i = 0; i < m && head != null; i++) {
             head = head.next;
+            if (i != m - 1) {
+                leftStart = head;
+            }
         }
         for (int i = 0; i < n && maxNode != null; i++) {
             maxNode = maxNode.next;
         }
 
-        ListNode temp = head;
-        while (head != null && n - m > 0) {
+        ListNode temp = null;
+        while (head != null && n - m >= 0) {
             ListNode next = head.next;
             head.next = temp;
             temp = head;
             head = next;
             n--;
+        }
+        if (leftStart != null) {
+            leftStart.next = temp;
+        } else {
+            dummy.next = temp;
+        }
+        while (temp.next != null) {
+            temp = temp.next;
         }
         temp.next = maxNode;
         return dummy.next;
@@ -547,7 +560,7 @@ public class MyLinkedList200426 {
         ListNode listNode11 = new ListNode(11);
 
         listNode1.next = listNode2;
-        listNode2.next = listNode3;
+//        listNode2.next = listNode3;
         listNode3.next = listNode4;
         listNode4.next = listNode5;
         listNode5.next = listNode6;
@@ -583,8 +596,9 @@ public class MyLinkedList200426 {
 
 //        System.out.println(partition(listNode1, 5));
 
-//        System.out.println(reverseBetween(listNode1, 5, 6));
-        ListNode[] a = {};
-        System.out.println(mergeKLists(a));
+        System.out.println(reverseBetween(listNode1, 1, 2));
+
+//        ListNode[] a = {};
+//        System.out.println(mergeKLists(a));
     }
 }
