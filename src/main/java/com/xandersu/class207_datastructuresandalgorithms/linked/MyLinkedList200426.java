@@ -302,21 +302,92 @@ public class MyLinkedList200426 {
         return dummyHead.next;
     }
 
+    //9.旋转链表
+    //61. 旋转链表
+    public static ListNode rotateRight(ListNode head, int k) {
+        if (head == null || head.next == null || k <= 0) {
+            return head;
+        }
+        ListNode lengthNode = head;
+        int length = 0;
+        while (lengthNode != null) {
+            lengthNode = lengthNode.next;
+            length++;
+        }
+        length = k % length;
+
+        ListNode dummyHead = new ListNode(0);
+        dummyHead.next = head;
+        head = dummyHead;
+        ListNode tail = dummyHead;
+
+        for (int i = 0; i < length; i++) {
+            head = head.next;
+        }
+
+        while (head.next != null) {
+            head = head.next;
+            tail = tail.next;
+        }
+
+        head.next = dummyHead.next;
+        dummyHead.next = tail.next;
+        tail.next = null;
+
+        return dummyHead.next;
+    }
+
+    //官方答案
+    static ListNode rotateRight2(ListNode head, int k) {
+        if (head == null) {
+            return null;
+        }
+        int length = getLength(head);
+        k = k % length;
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        head = dummy;
+        ListNode tail = dummy;
+        for (int i = 0; i < k; i++) {
+            head = head.next;
+        }
+        while (head.next != null) {
+            head = head.next;
+            tail = tail.next;
+        }
+        head.next = dummy.next;
+        dummy.next = tail.next;
+        tail.next = null;
+        return dummy.next;
+    }
+
+    public static int getLength(ListNode head) {
+        if (head == null) {
+            return 0;
+        }
+        int i = 0;
+        while (head != null) {
+            head = head.next;
+            i++;
+        }
+        return i;
+    }
+
 
     public static void main(String[] args) {
         ListNode listNode1 = new ListNode(1);
         ListNode listNode2 = new ListNode(2);
         ListNode listNode3 = new ListNode(3);
-        ListNode listNode4 = new ListNode(3);
-        ListNode listNode5 = new ListNode(4);
-        ListNode listNode6 = new ListNode(4);
-        ListNode listNode7 = new ListNode(5);
+        ListNode listNode4 = new ListNode(4);
+        ListNode listNode5 = new ListNode(5);
+        ListNode listNode6 = new ListNode(6);
+        ListNode listNode7 = new ListNode(7);
 
         listNode1.next = listNode2;
         listNode2.next = listNode3;
         listNode3.next = listNode4;
         listNode4.next = listNode5;
-        listNode5.next = listNode6;
+//        listNode5.next = listNode6;
         listNode6.next = listNode7;
         System.out.println(listNode1);
 
@@ -331,7 +402,13 @@ public class MyLinkedList200426 {
 
 //        System.out.println(removeNthFromEnd(listNode1, 2));
 
-        System.out.println(deleteDuplicates2(listNode1));
+//        System.out.println(deleteDuplicates2(listNode1));
+
+        System.out.println(rotateRight(listNode1, 2));
+
+//        int length = getLength(listNode1);
+//        System.out.println(length);
+//        System.out.println(listNode1);
     }
 
 }
