@@ -387,7 +387,7 @@ public class MyLinkedList200426 {
         int i = 0;
         ListNode prev = new ListNode(0);
         while (head != null && reverse != null) {
-            if (i%2 == 0) {
+            if (i % 2 == 0) {
                 prev.next = head;
                 head = head.next;
             } else {
@@ -426,6 +426,32 @@ public class MyLinkedList200426 {
             fast = fast.next.next;
         }
         return slow;
+    }
+
+    //11.链表划分
+    //86. 分隔链表
+    public static ListNode partition(ListNode head, int x) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode smallDummy = new ListNode(0);
+        ListNode smallPrev = smallDummy;
+        ListNode largeDummy = new ListNode(0);
+        ListNode largePrev = largeDummy;
+
+        while (head != null) {
+            if (head.val < x) {
+                smallPrev.next = head;
+                smallPrev = smallPrev.next;
+            } else {
+                largePrev.next = head;
+                largePrev = largePrev.next;
+            }
+            head = head.next;
+        }
+        smallPrev.next = largeDummy.next;
+        largePrev.next = null;
+        return smallDummy.next;
     }
 
 
@@ -474,8 +500,9 @@ public class MyLinkedList200426 {
 //        System.out.println(listNode1);
 
 //        System.out.println(reOrder(listNode1));
-        reOrder(listNode1);
-        System.out.println(listNode1);
+//        reOrder(listNode1);
+//        System.out.println(listNode1);
 
+        System.out.println(partition(listNode1, 5));
     }
 }
