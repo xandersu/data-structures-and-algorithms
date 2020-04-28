@@ -454,6 +454,84 @@ public class MyLinkedList200426 {
         return smallDummy.next;
     }
 
+    //12.翻转链表的n到m之间的节点
+    //92. 反转链表 II
+    public static ListNode reverseBetween(ListNode head, int m, int n) {
+        if (head == null || head.next == null || m < 0 || n < 0 || m >= n) {
+            return head;
+        }
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode maxNode = head;
+
+        for (int i = 1; i < m && head != null; i++) {
+            head = head.next;
+        }
+        for (int i = 0; i < n && maxNode != null; i++) {
+            maxNode = maxNode.next;
+        }
+
+        ListNode temp = head;
+        while (head != null && n - m > 0) {
+            ListNode next = head.next;
+            head.next = temp;
+            temp = head;
+            head = next;
+            n--;
+        }
+        temp.next = maxNode;
+        return dummy.next;
+    }
+
+    //13.合并K个排序过的链表
+    //LeetCode 23. 合并K个排序链表
+    public static ListNode mergeKLists(ListNode[] lists) {
+        if (lists == null || lists.length == 0) {
+            return null;
+        }
+        return mergeKLists(lists, 0, lists.length - 1);
+    }
+
+    public static ListNode mergeKLists(ListNode[] lists, int start, int end) {
+        if (lists == null || lists.length == 0) {
+            return null;
+        }
+        if (start >= end) {
+            return lists[start];
+        }
+        int mid = (start + end) / 2;
+
+        ListNode left = mergeKLists(lists, start, mid);
+        ListNode right = mergeKLists(lists, mid + 1, end);
+
+        return mergeTwoList(left, right);
+    }
+
+    public static ListNode mergeTwoList13(ListNode l1, ListNode l2) {
+        if (l1 == null) {
+            return l2;
+        }
+        if (l2 == null) {
+            return l1;
+        }
+        ListNode dummy = new ListNode(0);
+        ListNode pre = dummy;
+        while (l1 != null && l2 != null) {
+            if (l1.val < l2.val) {
+                dummy.next = l1;
+                l1 = l1.next;
+            } else {
+                dummy.next = l2;
+                l2 = l2.next;
+            }
+            dummy = dummy.next;
+        }
+
+        dummy.next = l1 != null ? l1 : l2;
+
+        return pre.next;
+    }
+
 
     public static void main(String[] args) {
         ListNode listNode1 = new ListNode(1);
@@ -503,6 +581,10 @@ public class MyLinkedList200426 {
 //        reOrder(listNode1);
 //        System.out.println(listNode1);
 
-        System.out.println(partition(listNode1, 5));
+//        System.out.println(partition(listNode1, 5));
+
+//        System.out.println(reverseBetween(listNode1, 5, 6));
+        ListNode[] a = {};
+        System.out.println(mergeKLists(a));
     }
 }
