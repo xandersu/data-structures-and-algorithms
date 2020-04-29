@@ -1,6 +1,7 @@
 package com.xandersu.class207_datastructuresandalgorithms.tree;
 
 import lombok.ToString;
+import lombok.val;
 
 import java.util.LinkedList;
 
@@ -179,6 +180,22 @@ public class MyTree200427 {
         return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
     }
 
+    //9.两个二叉树是否互为镜像
+    //101. 对称二叉树
+    public static boolean isMirror(TreeNode t1, TreeNode t2) {
+        if (t1 == null && t2 == null) {
+            return true;
+        } else if (t1 == null || t2 == null) {
+            return false;
+        }
+        if (t1.val != t2.val) {
+            return false;
+        }
+
+        return isMirror(t1.left, t2.right) && isMirror(t1.right, t2.left);
+    }
+
+
     public static void main(String[] args) {
         TreeNode root = new TreeNode(3);
         TreeNode l1 = new TreeNode(9);
@@ -204,7 +221,7 @@ public class MyTree200427 {
 
 //        System.out.println(isBalanced(root));
 
-        System.out.println(isCompleteTree(root));
+//        System.out.println(isCompleteTree(root));
 
 
     }
