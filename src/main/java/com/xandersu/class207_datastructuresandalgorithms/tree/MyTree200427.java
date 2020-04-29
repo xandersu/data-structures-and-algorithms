@@ -2,6 +2,8 @@ package com.xandersu.class207_datastructuresandalgorithms.tree;
 
 import lombok.ToString;
 
+import java.util.LinkedList;
+
 /**
  * @author: suxun
  * @date: 2020/4/27 11:34
@@ -133,6 +135,35 @@ public class MyTree200427 {
         return Math.max(getHigh6(root.left), getHigh6(root.right)) + 1;
     }
 
+    //7.判断二叉树是否是完全二叉树
+    //958. 二叉树的完全性检验
+    //给定一个二叉树，确定它是否是一个完全二叉树。
+    //若设二叉树的深度为 h，除第 h 层外，其它各层 (1～h-1) 的结点数都达到最大个数，第 h 层所有的结点都连续集中在最左边，这就是完全二叉树。（注：第 h 层可能包含 1~ 2h 个节点。）
+    public static boolean isCompleteTree(TreeNode root) {
+        if (root == null) {
+            return true;
+        }
+        LinkedList<TreeNode> linkedList = new LinkedList<>();
+        linkedList.push(root);
+        boolean flag = false;
+        while (!linkedList.isEmpty()) {
+            int curCount = linkedList.size();
+            for (int i = 0; i < curCount; i++) {
+                TreeNode poll = linkedList.poll();
+                if (poll != null) {
+                    if (flag) {
+                        return false;
+                    }
+                    linkedList.add(poll.left);
+                    linkedList.add(poll.right);
+                } else {
+                    flag = true;
+                }
+            }
+        }
+        return true;
+    }
+
     public static void main(String[] args) {
         TreeNode root = new TreeNode(3);
         TreeNode l1 = new TreeNode(9);
@@ -156,7 +187,9 @@ public class MyTree200427 {
 
 //        System.out.println(numsOfkLevelTreeNode(root, 4));
 
-        System.out.println(isBalanced(root));
+//        System.out.println(isBalanced(root));
+
+        System.out.println(isCompleteTree(root));
 
 
     }
