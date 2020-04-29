@@ -3,7 +3,10 @@ package com.xandersu.class207_datastructuresandalgorithms.tree;
 import lombok.ToString;
 import lombok.val;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * @author: suxun
@@ -197,8 +200,8 @@ public class MyTree200427 {
     //10.翻转二叉树or镜像二叉树
     //226. 翻转二叉树
     //剑指offer 面试题27. 二叉树的镜像
-    TreeNode mirrorTreeNode(TreeNode root){
-        if(root == null){
+    TreeNode mirrorTreeNode(TreeNode root) {
+        if (root == null) {
             return null;
         }
         TreeNode left = mirrorTreeNode(root.left);
@@ -218,6 +221,37 @@ public class MyTree200427 {
         treeNode.right = invertTree(root.left);
 
         return treeNode;
+    }
+
+    //11.求两个二叉树的最低公共祖先节点
+    //236. 二叉树的最近公共祖先
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if (root == null || root == p || root == q) {
+            return root;
+        }
+        TreeNode left = lowestCommonAncestor(root.left, p, q);
+        TreeNode right = lowestCommonAncestor(root.right, p, q);
+        if (left == null) {
+            return right;
+        }
+        if (right == null) {
+            return left;
+        }
+        return root;
+    }
+
+    //235. 二叉搜索树的最近公共祖先
+    public TreeNode lowestCommonAncestor235(TreeNode root, TreeNode p, TreeNode q) {
+        if (root == null || root == p || root == q) {
+            return root;
+        }
+
+        if (p.val > root.val && q.val > root.val) {
+            return lowestCommonAncestor235(root.right, p, q);
+        } else if (p.val < root.val && q.val < root.val) {
+            return lowestCommonAncestor235(root.left, p, q);
+        }
+        return root;
     }
 
 
