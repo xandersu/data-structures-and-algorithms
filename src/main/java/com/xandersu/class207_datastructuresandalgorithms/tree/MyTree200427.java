@@ -164,6 +164,21 @@ public class MyTree200427 {
         return true;
     }
 
+    //8.两个二叉树是否完全相同
+    //100. 相同的树
+    //如果两个树在结构上相同，并且节点具有相同的值，则认为它们是相同的。
+    public static boolean isSameTree(TreeNode p, TreeNode q) {
+        if (p == null && q == null) {
+            return true;
+        } else if (p == null || q == null) {
+            return false;
+        }
+        if (p.val != q.val) {
+            return false;
+        }
+        return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+    }
+
     public static void main(String[] args) {
         TreeNode root = new TreeNode(3);
         TreeNode l1 = new TreeNode(9);
