@@ -191,8 +191,33 @@ public class MyTree200427 {
         if (t1.val != t2.val) {
             return false;
         }
-
         return isMirror(t1.left, t2.right) && isMirror(t1.right, t2.left);
+    }
+
+    //10.翻转二叉树or镜像二叉树
+    //226. 翻转二叉树
+    //剑指offer 面试题27. 二叉树的镜像
+    TreeNode mirrorTreeNode(TreeNode root){
+        if(root == null){
+            return null;
+        }
+        TreeNode left = mirrorTreeNode(root.left);
+        TreeNode right = mirrorTreeNode(root.right);
+        root.left = right;
+        root.right = left;
+        return root;
+    }
+
+    public TreeNode invertTree(TreeNode root) {
+        if (root == null) {
+            return null;
+        }
+
+        TreeNode treeNode = new TreeNode(root.val);
+        treeNode.left = invertTree(root.right);
+        treeNode.right = invertTree(root.left);
+
+        return treeNode;
     }
 
 
