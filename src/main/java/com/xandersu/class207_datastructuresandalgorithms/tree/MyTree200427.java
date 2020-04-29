@@ -293,6 +293,65 @@ public class MyTree200427 {
         return list;
     }
 
+    //13.二叉树的中序遍历
+    //94. 二叉树的中序遍历
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> list = new ArrayList<>();
+        inorderTraversal(root, list);
+        return list;
+    }
+
+    private void inorderTraversal(TreeNode root, List<Integer> list) {
+        if (root == null) {
+            return;
+        }
+        inorderTraversal(root.left, list);
+        list.add(root.val);
+        inorderTraversal(root.right, list);
+    }
+
+
+    //889. 根据前序和后序遍历构造二叉树
+    //输入：pre = [1,2,4,5,3,6,7], post = [4,5,2,6,7,3,1]
+    //输出：[1,2,3,4,5,6,7]
+    public TreeNode constructFromPrePost(int[] pre, int[] post) {
+        //TODO
+        return null;
+    }
+
+    //15.前序遍历和中序遍历构造二叉树
+    //105. 从前序与中序遍历序列构造二叉树
+    //前序遍历 preorder = [3,9,20,15,7]
+    //中序遍历 inorder = [9,3,15,20,7]
+    public static TreeNode buildTree(int[] preorder, int[] inorder) {
+        if (preorder == null || preorder.length == 0) {
+            return null;
+        }
+        return help(preorder, 0, preorder.length - 1, inorder, 0, inorder.length - 1);
+    }
+
+    private static TreeNode help(int[] preorder, int pStart, int pEnd, int[] inorder, int iStart, int iEnd) {
+        if (pStart > pEnd || iStart > iEnd) {
+            return null;
+        }
+        int preIndex = preorder[pStart];
+        int index = 0;
+        for (int i = 0; i < inorder.length; i++) {
+            if (inorder[iStart + i] == preIndex) {
+                index = i;
+                break;
+            }
+        }
+        TreeNode treeNode = new TreeNode(preIndex);
+
+        //重建左子树
+        treeNode.left = help(preorder, pStart + 1, pStart + index, inorder, iStart, iStart + index - 1);
+        //重建右子树
+        treeNode.right = help(preorder, pStart + index + 1, pEnd, inorder, iStart + index + 1, iEnd);
+
+        return treeNode;
+    }
+
 
     public static void main(String[] args) {
         TreeNode root = new TreeNode(3);
@@ -321,6 +380,10 @@ public class MyTree200427 {
 
 //        System.out.println(isCompleteTree(root));
 
+
+        int[] preOrder = {1, 2, 4, 5, 3, 6, 7};
+        int[] inOrder = {4, 2, 5, 1, 6, 3, 7};
+        System.out.println(buildTree(preOrder, inOrder));
 
     }
 }
