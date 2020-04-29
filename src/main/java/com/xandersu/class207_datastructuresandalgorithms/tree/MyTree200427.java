@@ -352,6 +352,38 @@ public class MyTree200427 {
         return treeNode;
     }
 
+    //16.在二叉树中插入节点
+    //701. 二叉搜索树中的插入操作
+    public static TreeNode insertIntoBST(TreeNode root, int val) {
+        if (root == null) {
+            return new TreeNode(val);
+        } else {
+            insertIntoBST2(root, val);
+        }
+        return root;
+    }
+
+    private static void insertIntoBST2(TreeNode root, int val) {
+        int rootVal = root.val;
+        if (rootVal == val) {
+            return;
+        }
+        if (val < rootVal && root.left == null) {
+            root.left = new TreeNode(val);
+            return;
+        }
+        if (val > rootVal && root.right == null) {
+            root.right = new TreeNode(val);
+            return;
+        }
+
+        if (val < rootVal) {
+            insertIntoBST2(root.left, val);
+        } else {
+            insertIntoBST2(root.right, val);
+        }
+    }
+
 
     public static void main(String[] args) {
         TreeNode root = new TreeNode(3);
