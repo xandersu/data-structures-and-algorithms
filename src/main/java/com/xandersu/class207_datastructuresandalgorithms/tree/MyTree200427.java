@@ -30,6 +30,54 @@ public class MyTree200427 {
         return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
     }
 
+    //2.求二叉树的最小深度
+    //111. 二叉树的最小深度
+    //很多人写出的代码都不符合 1,2 这个测试用例，是因为没搞清楚题意
+    //
+    //题目中说明:叶子节点是指没有子节点的节点，这句话的意思是 1 不是叶子节点
+    //题目问的是到叶子节点的最短距离，所以所有返回结果为 1 当然不是这个结果
+    //另外这道题的关键是搞清楚递归结束条件:
+    //1.叶子节点的定义是左孩子和右孩子都为 null 时叫做叶子节点
+    //2.当 root 节点左右孩子都为空时，返回 1
+    //3.当 root 节点左右孩子有一个为空时，返回不为空的孩子节点的深度
+    //4.当 root 节点左右孩子都不为空时，返回左右孩子较小深度的节点值
+    public static int minDepth(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        if (root.left == null && root.right == null) {
+            return 1;
+        }
+        int min = Integer.MAX_VALUE;
+        //
+        if (root.left != null) {
+            min = minDepth(root.left);
+        }
+        if (root.right != null) {
+            min = Math.min(minDepth(root.right), min);
+        }
+        return min + 1;
+    }
+
+    public int minDepth2(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        if (root.left == null && root.right == null) {
+            return 1;
+        }
+        int left = Integer.MAX_VALUE;
+        int right = Integer.MAX_VALUE;
+        if (root.left != null) {
+            left = minDepth(root.left);
+        }
+
+        if (root.right != null) {
+            right = minDepth(root.right);
+        }
+        return Math.min(left, right) + 1;
+    }
+
 
     public static void main(String[] args) {
         TreeNode root = new TreeNode(3);
@@ -45,6 +93,7 @@ public class MyTree200427 {
         System.out.println(root);
 
         System.out.println(maxDepth(root));
+        System.out.println(minDepth(root));
 
     }
 }

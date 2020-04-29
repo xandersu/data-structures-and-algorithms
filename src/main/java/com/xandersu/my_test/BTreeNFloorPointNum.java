@@ -60,17 +60,17 @@ public class BTreeNFloorPointNum {
     }
 
     //2.求二叉树的最小深度????
-    public static int minHeight(TreeNode treeNode) {
-        if (treeNode == null) {
-            return 0;
-        }
-        TreeNode left = treeNode.left;
-        TreeNode right = treeNode.right;
-        if (left == null || right == null) {
-            return 0;
-        }
-        return Math.min(minHeight(left), minHeight(right)) + 1;
-    }
+//    public static int minHeight(TreeNode treeNode) {
+//        if (treeNode == null) {
+//            return 0;
+//        }
+//        TreeNode left = treeNode.left;
+//        TreeNode right = treeNode.right;
+//        if (left == null || right == null) {
+//            return 0;
+//        }
+//        return Math.min(minHeight(left), minHeight(right)) + 1;
+//    }
 
     //3,求二叉树中节点的个数
     private static int getNodeSize(TreeNode treeNode) {
