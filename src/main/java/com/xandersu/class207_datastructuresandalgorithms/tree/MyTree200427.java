@@ -86,7 +86,7 @@ public class MyTree200427 {
         return numOfTreeNode(root.left) + numOfTreeNode(root.right) + 1;
     }
 
-    //求二叉树中叶子节点的个数
+    //4,求二叉树中叶子节点的个数
     public static int numsOfNoChildNode(TreeNode root) {
         if (root == null) {
             return 0;
@@ -97,6 +97,17 @@ public class MyTree200427 {
         return numsOfNoChildNode(root.left) + numsOfNoChildNode(root.right);
     }
 
+    //5.求二叉树中第k层节点的个数
+    public static int numsOfkLevelTreeNode(TreeNode root, int k) {
+        if (root == null || k <= 0) {
+            return 0;
+        }
+        if (k == 1) {
+            return 1;
+        }
+        k -= 1;
+        return numsOfkLevelTreeNode(root.left, k) + numsOfkLevelTreeNode(root.right, k);
+    }
 
     public static void main(String[] args) {
         TreeNode root = new TreeNode(3);
@@ -117,7 +128,10 @@ public class MyTree200427 {
 
 //        System.out.println(numOfTreeNode(root));
 
-        System.out.println(numsOfNoChildNode(root));
+//        System.out.println(numsOfNoChildNode(root));
+
+        System.out.println(numsOfkLevelTreeNode(root, 4));
+
 
     }
 }
