@@ -86,6 +86,17 @@ public class MyTree200427 {
         return numOfTreeNode(root.left) + numOfTreeNode(root.right) + 1;
     }
 
+    //求二叉树中叶子节点的个数
+    public static int numsOfNoChildNode(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        if (root.left == null && root.right == null) {
+            return 1;
+        }
+        return numsOfNoChildNode(root.left) + numsOfNoChildNode(root.right);
+    }
+
 
     public static void main(String[] args) {
         TreeNode root = new TreeNode(3);
@@ -100,10 +111,13 @@ public class MyTree200427 {
         root.right.right = r1r2;
         System.out.println(root);
 
-        System.out.println(maxDepth(root));
+//        System.out.println(maxDepth(root));
+
 //        System.out.println(minDepth(root));
 
-        System.out.println(numOfTreeNode(root));
+//        System.out.println(numOfTreeNode(root));
+
+        System.out.println(numsOfNoChildNode(root));
 
     }
 }
