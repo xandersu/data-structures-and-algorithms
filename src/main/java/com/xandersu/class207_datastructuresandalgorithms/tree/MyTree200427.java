@@ -78,6 +78,14 @@ public class MyTree200427 {
         return Math.min(left, right) + 1;
     }
 
+    //3,求二叉树中节点的个数
+    public static int numOfTreeNode(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        return numOfTreeNode(root.left) + numOfTreeNode(root.right) + 1;
+    }
+
 
     public static void main(String[] args) {
         TreeNode root = new TreeNode(3);
@@ -93,7 +101,9 @@ public class MyTree200427 {
         System.out.println(root);
 
         System.out.println(maxDepth(root));
-        System.out.println(minDepth(root));
+//        System.out.println(minDepth(root));
+
+        System.out.println(numOfTreeNode(root));
 
     }
 }
