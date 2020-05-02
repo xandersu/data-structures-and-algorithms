@@ -1,4 +1,4 @@
-package com.xandersu.class71_algorithms.chapter_2_sort_base.$02_01_selection_sort;
+package com.xandersu.class71_algorithms.chapter2_sort_base.$02_01_selection_sort;
 
 import com.xandersu.class71_algorithms.SortUtil;
 import org.springframework.util.StopWatch;

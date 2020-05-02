@@ -1,9 +1,6 @@
-package com.xandersu.class71_algorithms.chapter_2_sort_base.$02_02_insert_sort;
+package com.xandersu.class71_algorithms.chapter2_sort_base.$02_02_insert_sort;
 
 import com.xandersu.class71_algorithms.SortUtil;
-import org.springframework.util.StopWatch;
-
-import java.util.Arrays;
 
 /**
  * @author: suxun
