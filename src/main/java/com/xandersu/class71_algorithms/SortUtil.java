@@ -37,6 +37,7 @@ public class SortUtil {
     public static boolean isFromSmallToLarge(int[] arr) {
         for (int i = 1; i < arr.length; i++) {
             if (arr[i - 1] > arr[i]) {
+                System.out.println("验证失败： arr[i-1]= " + arr[i - 1] + "  arr[i]= " + arr[i]);
                 return false;
             }
         }
@@ -53,6 +54,9 @@ public class SortUtil {
     }
 
     public static void verify(Consumer<int[]> consumer, int length, int max, boolean printArray) {
+        if (length > 10000) {
+            printArray = false;
+        }
         int[] arr = SortUtil.generatePrintArr(length, max, printArray);
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();

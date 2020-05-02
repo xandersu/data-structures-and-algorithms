@@ -148,9 +148,9 @@ public class QuickSort {
         int v = arr[l];
 
         int lt = l;
-        int gt = r;
+        int gt = r + 1;
         int i = l + 1;
-        while (i <= gt) {
+        while (i < gt) {
             if (arr[i] == v) {
                 i++;
             } else if (arr[i] < v) {
@@ -158,7 +158,7 @@ public class QuickSort {
                 swap_my(arr, lt, i);
                 i++;
             } else if (v < arr[i]) {
-                swap_my(arr, gt, i);
+                swap_my(arr, gt - 1, i);
                 gt--;
             }
         }
@@ -181,10 +181,10 @@ public class QuickSort {
 
 //        SortUtil.verify(QuickSort::sort_My, length, 100, false);
 //        SortUtil.verify(QuickSort::sort_My2, length, 100, false);
-        SortUtil.verify(QuickSort::sort_My, length, 100, false);
-        SortUtil.verify(QuickSort::sort_My3, length, 100, false);
-        SortUtil.verify(MergeSort::sort_T, length, 100, false);
-        SortUtil.verify(MergeSort::sort2, length, 100, false);
+//        SortUtil.verify(QuickSort::sort_My, length, 100, false);
+        SortUtil.verify(QuickSort::sort_My3, length, 100000, false);
+//        SortUtil.verify(MergeSort::sort_T, length, 100, false);
+//        SortUtil.verify(MergeSort::sort2, length, 100, false);
 
     }
 }
