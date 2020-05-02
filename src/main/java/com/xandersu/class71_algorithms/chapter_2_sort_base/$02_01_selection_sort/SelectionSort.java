@@ -1,4 +1,4 @@
-package com.xandersu.class71_algorithms.chapter_2_sort_base.$02_selection_sort;
+package com.xandersu.class71_algorithms.chapter_2_sort_base.$02_01_selection_sort;
 
 import com.xandersu.class71_algorithms.SortUtil;
 import org.springframework.util.StopWatch;
@@ -34,7 +34,7 @@ public class SelectionSort {
     }
 
     public static void main(String[] args) {
-        int[] ints = SortUtil.generatePrintArr(100, 100);
+        int[] ints = SortUtil.generatePrintArr(10000, 100);
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
         sort(ints);

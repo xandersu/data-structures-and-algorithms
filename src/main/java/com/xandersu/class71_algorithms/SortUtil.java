@@ -1,8 +1,9 @@
 package com.xandersu.class71_algorithms;
 
-import org.springframework.util.NumberUtils;
+import org.springframework.util.StopWatch;
 
 import java.util.Arrays;
+import java.util.function.Consumer;
 
 /**
  * @author su
@@ -26,4 +27,30 @@ public class SortUtil {
         arr[j] = t;
     }
 
+    //是否从小到大
+    public static boolean isFromSmallToLarge(int[] arr) {
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i - 1] > arr[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    //验证
+    public static void verify(Consumer<int[]> consumer) {
+        int[] arr = SortUtil.generatePrintArr(10, 100);
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
+
+        consumer.accept(arr);
+
+        stopWatch.stop();
+        System.out.println("耗时 = " + stopWatch.getTotalTimeSeconds() + " 秒， "
+                + stopWatch.getTotalTimeMillis() + " 毫秒。");
+        System.out.println();
+        System.out.println(Arrays.toString(arr));
+
+        System.out.println("排序后的数组是否正确：" + SortUtil.isFromSmallToLarge(arr));
+    }
 }
