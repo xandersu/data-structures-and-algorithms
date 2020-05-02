@@ -60,10 +60,9 @@ public class SortUtil {
         consumer.accept(arr);
 
         stopWatch.stop();
-        System.out.println("耗时 = " + stopWatch.getTotalTimeSeconds() + "秒， "
+        System.out.println("排序耗时 = " + stopWatch.getTotalTimeSeconds() + "秒， "
                 + stopWatch.getTotalTimeMillis() + "毫秒。");
         if (printArray) {
-            System.out.println();
             System.out.println(Arrays.toString(arr));
         }
 

@@ -1,4 +1,4 @@
-package com.xandersu.class71_algorithms.chapter3_sorting_advance;
+package com.xandersu.class71_algorithms.chapter3_sorting_advance.$01_merge_sort;
 
 import com.xandersu.class71_algorithms.SortUtil;
 import org.springframework.util.StopWatch;
@@ -13,7 +13,8 @@ import java.util.Arrays;
 public class MergeSort {
 
     //自己的实现
-    //根绝葛冰两个链表的思想
+    //根绝合并两个链表的思想
+    //?????
     public static int[] sort_My(int[] arr) {
 
         return partition(arr, 0, arr.length - 1);
