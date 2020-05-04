@@ -66,7 +66,7 @@ public class InsertSort {
 
 
     public static void main(String[] args) {
-        SortUtil.verify(InsertSort::sort4);
+        SortUtil.verify(InsertSort::sort4,1000000,1000000);
     }
 
 }

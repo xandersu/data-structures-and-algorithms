@@ -174,7 +174,7 @@ public class MergeSort {
     }
 
     public static void main(String[] args) {
-        int length = 1000;
+        int length = 1000000;
 
         int[] arr = SortUtil.generatePrintArr(length, length, false);
         StopWatch stopWatch = new StopWatch();
@@ -193,7 +193,7 @@ public class MergeSort {
 
         System.out.println();
 
-        SortUtil.verify(MergeSort::mergeBU, length, length, false);
+//        SortUtil.verify(MergeSort::mergeBU, length, length, false);
 
 
         SortUtil.verify(MergeSort::sort_T, length, length, false);

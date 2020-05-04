@@ -1,4 +1,5 @@
-package com.xandersu.class71_algorithms.practice;
+package com.xandersu.my_test.practice;
+
 
 import com.xandersu.class71_algorithms.SortUtil;
 

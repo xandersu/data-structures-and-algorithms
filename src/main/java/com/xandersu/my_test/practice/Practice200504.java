@@ -1,4 +1,4 @@
-package com.xandersu.class71_algorithms.practice;
+package com.xandersu.my_test.practice;
 
 import com.xandersu.class71_algorithms.SortUtil;
 
@@ -6,29 +6,12 @@ import java.util.Arrays;
 
 /**
  * @author: suxun
- * @date: 2020/5/3 10:22
+ * @date: 2020/5/4 10:03
  * @description:
  */
-public class Practice200503 {
+public class Practice200504 {
 
-    public static void swap(int[] arr, int i, int j) {
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
-    }
-
-    public static void select(int[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            int index = i;
-            for (int j = i; j < arr.length; j++) {
-                if (arr[j] < arr[index]) {
-                    index = j;
-                }
-            }
-            swap(arr, index, i);
-        }
-    }
-
+    //insert
     public static void insert(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
             int num = arr[i];
@@ -38,8 +21,10 @@ public class Practice200503 {
             }
             arr[j] = num;
         }
+
     }
 
+    //merge
     public static void merge(int[] arr) {
         merge(arr, 0, arr.length - 1);
     }
@@ -48,16 +33,16 @@ public class Practice200503 {
         if (l >= r) {
             return;
         }
-        int mid = (l + r) / 2;
+        int mid = l + (r - l) / 2;
         merge(arr, l, mid);
         merge(arr, mid + 1, r);
 
         merge(arr, l, mid, r);
+
     }
 
     public static void merge(int[] arr, int l, int mid, int r) {
         int[] aux = Arrays.copyOfRange(arr, l, r + 1);
-
         int lIndex = l;
         int rIndex = mid + 1;
         int k = l;
@@ -72,20 +57,15 @@ public class Practice200503 {
             }
             k++;
         }
-
-        if (lIndex <= mid) {
-            for (; lIndex <= mid; lIndex++, k++) {
-                arr[k] = aux[lIndex - l];
-            }
+        for (; lIndex <= mid; lIndex++, k++) {
+            arr[k] = aux[lIndex - l];
         }
-
-        if (rIndex <= r) {
-            for (; rIndex <= r; rIndex++, k++) {
-                arr[k] = aux[rIndex - l];
-            }
+        for (; rIndex <= r; rIndex++, k++) {
+            arr[k] = aux[rIndex - l];
         }
     }
 
+    //quick 1
     public static void quick_1(int[] arr) {
         quick_1(arr, 0, arr.length - 1);
     }
@@ -95,12 +75,14 @@ public class Practice200503 {
             return;
         }
         int p = partition_1(arr, l, r);
+
         quick_1(arr, l, p - 1);
         quick_1(arr, p + 1, r);
     }
 
     public static int partition_1(int[] arr, int l, int r) {
         int v = arr[l];
+        // arr[l+1...j] < v ; arr[j+1...i) > v
         int j = l;
         for (int i = l + 1; i <= r; i++) {
             if (arr[i] < v) {
@@ -109,10 +91,10 @@ public class Practice200503 {
             }
         }
         swap(arr, l, j);
-
         return j;
     }
 
+    //quick 2
     public static void quick_2(int[] arr) {
         quick_2(arr, 0, arr.length - 1);
     }
@@ -122,20 +104,22 @@ public class Practice200503 {
             return;
         }
         int p = partition_2(arr, l, r);
+
         quick_2(arr, l, p - 1);
         quick_2(arr, p + 1, r);
     }
 
     public static int partition_2(int[] arr, int l, int r) {
         int v = arr[l];
+
+        // arr[l+1...lt) <= v; arr(gt...r] >= v
         int lt = l + 1;
         int gt = r;
-
         while (true) {
-            while (arr[lt] < v && lt <= r) {
+            while (lt <= r && arr[lt] < v) {
                 lt++;
             }
-            while (arr[gt] > v && gt >= l + 1) {
+            while (gt > lt && arr[gt] > v) {
                 gt--;
             }
             if (lt > gt) {
@@ -146,10 +130,11 @@ public class Practice200503 {
             gt--;
         }
         swap(arr, l, gt);
-
         return gt;
     }
 
+
+    //quick 3
     public static void quick_3(int[] arr) {
         quick_3(arr, 0, arr.length - 1);
     }
@@ -158,13 +143,15 @@ public class Practice200503 {
         if (l >= r) {
             return;
         }
-
         int v = arr[l];
 
+        //arr[l+1...lt] <v
+        //arr[lt+1 ... i-1] = v
+        //arr[gt...r]>v
         int lt = l;
         int gt = r + 1;
-        int i = l + 1;
 
+        int i = l + 1;
         while (i < gt) {
             if (arr[i] < v) {
                 lt++;
@@ -181,15 +168,21 @@ public class Practice200503 {
 
         quick_3(arr, l, lt - 1);
         quick_3(arr, gt, r);
+    }
 
+
+    public static void swap(int[] arr, int i, int j) {
+        int t = arr[i];
+        arr[i] = arr[j];
+        arr[j] = t;
     }
 
     public static void main(String[] args) {
-//        SortUtil.verify(Practice200503::select,10000,10000);
-//        SortUtil.verify(Practice200503::insert, 10000, 10000);
-//        SortUtil.verify(Practice200503::merge, 10000, 10000);
-//        SortUtil.verify(Practice200503::quick_1, 10000, 10000);
-//        SortUtil.verify(Practice200503::quick_2, 10000, 10000);
-        SortUtil.verify(Practice200503::quick_3, 10000, 10000);
+//        SortUtil.verify(Practice200504::insert, 1000000, 100000);
+//        SortUtil.verify(Practice200504::merge, 1000, 100000);
+//        SortUtil.verify(Practice200504::quick_1, 1000000, 100000);
+//        SortUtil.verify(Practice200504::quick_2, 1000000, 100000);
+        SortUtil.verify(Practice200504::quick_3, 1000000, 100000);
     }
+
 }
