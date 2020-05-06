@@ -84,6 +84,7 @@ public class Practice200506 {
     public static int partition_1(int[] arr, int l, int r) {
         int v = arr[l];
         //[l+1,j]<v
+        //[i...r]考察点
         int j = l;
         for (int i = l + 1; i <= r; i++) {
             if (arr[i] < v) {
@@ -114,6 +115,7 @@ public class Practice200506 {
         int v = arr[l];
         //[l+1,lt-1]<=v
         //(gt,r]>=v
+        //[lt,gt]考察点
         int lt = l + 1;
         int gt = r;
         while (true) {
@@ -148,6 +150,7 @@ public class Practice200506 {
         //[l+1,lt]<v
         //[gt,r]>v
         //[l+1,i-1]=v
+        //[i,gt-1] 考察点
         int lt = l;
         int gt = r + 1;
         int i = l + 1;
