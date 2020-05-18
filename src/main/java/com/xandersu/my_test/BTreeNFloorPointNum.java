@@ -25,14 +25,21 @@ public class BTreeNFloorPointNum {
         treeNode.add(-1);
 //        System.out.println(treeNode);
 
-        treeNode.preFor();
-        System.out.println("=====");
-        treeNode.inOrder();
-        System.out.println("=====");
-        treeNode.afterOrder();
+//        treeNode.preFor();
+//        System.out.println("=====");
+//        treeNode.inOrder();
+//        System.out.println("=====");
+//        treeNode.afterOrder();
 
         //5.求二叉树中第k层节点的个数
-//        System.out.println("第" + 1 + "层个数=" + getFloorSize(treeNode, 1));
+        System.out.println("第" + 1 + "层个数=" + getFloorSize(treeNode, 1));
+        System.out.println("第" + 2 + "层个数=" + getFloorSize(treeNode, 2));
+        System.out.println("第" + 3 + "层个数=" + getFloorSize(treeNode, 3));
+        System.out.println("第" + 4 + "层个数=" + getFloorSize(treeNode, 4));
+        System.out.println("第" + 1 + "层个数=" + numsOfkLevelTreeNode2(treeNode, 1));
+        System.out.println("第" + 2 + "层个数=" + numsOfkLevelTreeNode2(treeNode, 2));
+        System.out.println("第" + 3 + "层个数=" + numsOfkLevelTreeNode2(treeNode, 3));
+        System.out.println("第" + 4 + "层个数=" + numsOfkLevelTreeNode2(treeNode, 4));
 //        System.out.println(getFloorSize(treeNode, 2));
 //        System.out.println(getFloorSize(treeNode, 3));
 //        System.out.println(getFloorSize(treeNode, 4));
@@ -118,7 +125,7 @@ public class BTreeNFloorPointNum {
 
         Deque<TreeNode> tempDeque = new LinkedList<>();
         tempDeque.addFirst(root);
-        while (!tempDeque.isEmpty()){
+        while (!tempDeque.isEmpty()) {
             TreeNode treeNode = tempDeque.pollFirst();
             res.add(treeNode.val);
             if (treeNode.left != null) {
@@ -132,11 +139,11 @@ public class BTreeNFloorPointNum {
     }
 
     //从上到下按层打印二叉树，同一层结点从左至右输出。每一层输出一行。
-    ArrayList<ArrayList<Integer> > Print(TreeNode pRoot) {
+    ArrayList<ArrayList<Integer>> Print(TreeNode pRoot) {
 
         ArrayList<ArrayList<Integer>> res = new ArrayList<>();
 
-        Print(pRoot,1,res);
+        Print(pRoot, 1, res);
         return res;
     }
 
@@ -144,16 +151,16 @@ public class BTreeNFloorPointNum {
         if (pRoot == null) {
             return;
         }
-        if(deep>res.size()){
+        if (deep > res.size()) {
             ArrayList<Integer> temp = new ArrayList<>();
             temp.add(pRoot.val);
             res.add(temp);
-        }else{
+        } else {
             ArrayList<Integer> temp = res.get(deep);
             temp.add(pRoot.val);
         }
-        Print(pRoot.left,deep+1,res);
-        Print(pRoot.right,deep+1,res);
+        Print(pRoot.left, deep + 1, res);
+        Print(pRoot.right, deep + 1, res);
     }
 
     //==========================================================================
@@ -196,6 +203,18 @@ public class BTreeNFloorPointNum {
         int numsLeft = numsOfkLevelTreeNode(root.left, k - 1);
         int numsRight = numsOfkLevelTreeNode(root.right, k - 1);
         return numsLeft + numsRight;
+    }
+
+    static int numsOfkLevelTreeNode2(TreeNode root, int k) {
+        if (root == null || k <= 0) {
+            return 0;
+        }
+        if (k == 1) {
+            return 1;
+        }
+
+        int next = k - 1;
+        return numsOfkLevelTreeNode2(root.left, next) + numsOfkLevelTreeNode2(root.right, next);
     }
 
 
@@ -261,10 +280,11 @@ public class BTreeNFloorPointNum {
             }
         }
 
-        public void preFor(){
+        public void preFor() {
             preFor(this);
         }
-        public void preFor(TreeNode treeNode){
+
+        public void preFor(TreeNode treeNode) {
             if (treeNode == null) {
                 return;
             }
@@ -273,10 +293,11 @@ public class BTreeNFloorPointNum {
             preFor(treeNode.right);
         }
 
-        public void inOrder(){
+        public void inOrder() {
             inOrder(this);
         }
-        public void inOrder(TreeNode treeNode){
+
+        public void inOrder(TreeNode treeNode) {
             if (treeNode == null) {
                 return;
             }
@@ -285,10 +306,11 @@ public class BTreeNFloorPointNum {
             preFor(treeNode.right);
         }
 
-        public void afterOrder(){
+        public void afterOrder() {
             afterOrder(this);
         }
-        public void afterOrder(TreeNode treeNode){
+
+        public void afterOrder(TreeNode treeNode) {
             if (treeNode == null) {
                 return;
             }
