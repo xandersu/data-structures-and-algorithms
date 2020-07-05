@@ -9,13 +9,13 @@ import java.util.Arrays;
  * root节点 index=1
  * 二叉堆是一颗完全二叉树。（最大堆：越往上越大，但不一定）
  */
-public class MaxHeap<T extends Comparable> {
+public class MaxHeap20200503<T extends Comparable> {
 
     private T[] data;
     private int count;
     private int capacity;
 
-    public MaxHeap(int capacity) {
+    public MaxHeap20200503(int capacity) {
         data = (T[]) new Comparable[capacity + 1];
         count = 0;
         this.capacity = capacity;
@@ -32,7 +32,7 @@ public class MaxHeap<T extends Comparable> {
 
     // 像最大堆中插入一个新的元素 item
     public void insert(T t) {
-        assert capacity + 1 <= capacity;
+        assert count + 1 <= capacity;
         count++;
         data[count] = t;
         shiftUp(count);
@@ -96,19 +96,19 @@ public class MaxHeap<T extends Comparable> {
     }
 
     public static void main(String[] args) {
-        MaxHeap<Integer> maxHeap = new MaxHeap<>(100);
+        MaxHeap20200503<Integer> maxHeap20200503 = new MaxHeap20200503<>(100);
 //        System.out.println(maxHeap.count);
 //        System.out.println(maxHeap.isEmpty());
 
         for (int i = 0; i < 10; i++) {
-            maxHeap.insert((int) (Math.random() * 100));
+            maxHeap20200503.insert((int) (Math.random() * 100));
         }
 
-        System.out.println(maxHeap.removeMax());
-        System.out.println(Arrays.toString(maxHeap.data));
+        System.out.println(maxHeap20200503.removeMax());
+        System.out.println(Arrays.toString(maxHeap20200503.data));
         for (int i = 0; i < 9; i++) {
-            System.out.println(maxHeap.removeMax());
+            System.out.println(maxHeap20200503.removeMax());
         }
-        System.out.println(Arrays.toString(maxHeap.data));
+        System.out.println(Arrays.toString(maxHeap20200503.data));
     }
 }

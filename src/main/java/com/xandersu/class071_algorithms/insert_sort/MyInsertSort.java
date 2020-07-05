@@ -1,7 +1,7 @@
 package com.xandersu.class071_algorithms.insert_sort;
 
 
-import com.xandersu.class071_algorithms.SortUtil;
+import com.xandersu.util.SortUtil;
 import com.xandersu.class071_algorithms.select_sort.MySelectSort;
 
 import java.util.Arrays;

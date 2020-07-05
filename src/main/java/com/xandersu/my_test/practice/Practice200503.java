@@ -1,6 +1,6 @@
 package com.xandersu.my_test.practice;
 
-import com.xandersu.class071_algorithms.SortUtil;
+import com.xandersu.util.SortUtil;
 
 import java.util.Arrays;
 

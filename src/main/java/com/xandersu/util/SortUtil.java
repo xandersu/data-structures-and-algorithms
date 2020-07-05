@@ -1,4 +1,4 @@
-package com.xandersu.class071_algorithms;
+package com.xandersu.util;
 
 import org.springframework.util.StopWatch;
 
@@ -71,6 +71,12 @@ public class SortUtil {
         }
 
         System.out.println("排序后的数组是否正确：" + SortUtil.isFromSmallToLarge(arr));
-
     }
+
+//    /**
+//     * 打印数组结构的堆
+//     */
+//    public static void printArrHeap(Object[] arr) {
+//
+//    }
 }

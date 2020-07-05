@@ -1,6 +1,6 @@
 package com.xandersu.class071_algorithms.chapter3_sorting_advance.$01_merge_sort;
 
-import com.xandersu.class071_algorithms.SortUtil;
+import com.xandersu.util.SortUtil;
 import org.springframework.util.StopWatch;
 
 import java.util.Arrays;

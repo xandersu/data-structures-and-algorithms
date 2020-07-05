@@ -10,7 +10,7 @@ import java.util.Random;
  * @Date: 2018/10/21 14:58
  * @Description:
  */
-public class TestMaxHeap {
+public class TestMaxHeap20200503 {
 
     @Test
     public void testMyArray() {

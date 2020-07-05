@@ -1,6 +1,6 @@
 package com.xandersu.class071_algorithms.chapter2_sort_base.$02_02_insert_sort;
 
-import com.xandersu.class071_algorithms.SortUtil;
+import com.xandersu.util.SortUtil;
 
 /**
  * @author: suxun

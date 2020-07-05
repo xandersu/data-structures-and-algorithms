@@ -1,6 +1,6 @@
 package com.xandersu.class071_algorithms.chapter2_sort_base.bubble_sort;
 
-import com.xandersu.class071_algorithms.SortUtil;
+import com.xandersu.util.SortUtil;
 import org.springframework.util.StopWatch;
 
 import java.util.Arrays;

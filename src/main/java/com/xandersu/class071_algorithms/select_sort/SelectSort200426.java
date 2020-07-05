@@ -1,6 +1,6 @@
 package com.xandersu.class071_algorithms.select_sort;
 
-import com.xandersu.class071_algorithms.SortUtil;
+import com.xandersu.util.SortUtil;
 
 import java.util.Arrays;
 

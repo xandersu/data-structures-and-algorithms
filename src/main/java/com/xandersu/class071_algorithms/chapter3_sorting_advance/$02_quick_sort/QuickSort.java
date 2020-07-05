@@ -1,6 +1,6 @@
 package com.xandersu.class071_algorithms.chapter3_sorting_advance.$02_quick_sort;
 
-import com.xandersu.class071_algorithms.SortUtil;
+import com.xandersu.util.SortUtil;
 
 /**
  * @author: suxun
