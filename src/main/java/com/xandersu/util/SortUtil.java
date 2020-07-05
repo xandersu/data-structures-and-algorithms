@@ -18,7 +18,7 @@ public class SortUtil {
 
     public static int[] generatePrintArr(int length, int max, boolean printArr) {
         int[] arr = new int[length];
-        for (int i = 0; i < length - 1; i++) {
+        for (int i = 0; i < length; i++) {
             arr[i] = (int) (Math.random() * max);
         }
         if (printArr) {
