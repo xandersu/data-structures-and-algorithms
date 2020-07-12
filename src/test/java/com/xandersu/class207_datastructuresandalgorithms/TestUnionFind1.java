@@ -12,7 +12,7 @@ import java.util.Random;
  * @Description:
  */
 @SpringBootTest
-public class TestUnionFind {
+public class TestUnionFind1 {
     @Test
     public void testUF() {
         int size = 1000000;
