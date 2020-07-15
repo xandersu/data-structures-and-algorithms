@@ -65,8 +65,9 @@ public class SparseGraph implements Graph {
 
     public void show() {
         for (int i = 0; i < n; i++) {
+            System.out.println(i+"->");
             for (int j = 0; j < g[i].size(); j++) {
-                System.out.println(g[i].get(i));
+                System.out.println(g[i].get(j));
             }
             System.out.println();
         }
