@@ -27,6 +27,14 @@ public class SortUtil {
         return arr;
     }
 
+    public static int[] generateOrderPrintArr(int length) {
+        int[] arr = new int[length];
+        for (int i = 0; i < length; i++) {
+            arr[i] = i;
+        }
+        return arr;
+    }
+
     public static void swap(int[] arr, int i, int j) {
         int t = arr[i];
         arr[i] = arr[j];
